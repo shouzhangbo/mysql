@@ -1,0 +1,12 @@
+body{margin:0px;padding:0px;}
+*{margin:0px;padding:0px;}
+
+.fl{float:left;}
+.fr{float:right;}
+.mt-10{margin-top:10px;}
+.mt-10{padding-top:10px;}
+.w-100{width:100px;}
+
+.h-50{height:50px;}
+.h-80{height:80px;}
+a{text-decoration:none;}
