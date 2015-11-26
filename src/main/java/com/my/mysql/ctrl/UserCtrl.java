@@ -2,6 +2,9 @@ package com.my.mysql.ctrl;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -28,7 +31,9 @@ public class UserCtrl {
 	public UserInfoService userInfiService;
 	@RequestMapping(value = "/register", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-	public BaseResponse register(@Validated({resigerForm.class}) ResigerForm userForm, BindingResult result){
+	public BaseResponse register(@Validated({resigerForm.class}) ResigerForm userForm, 
+			BindingResult result,HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse baseRes = new BaseResponse();
 		 try {
 	            if (result.hasErrors()) {
