@@ -12,23 +12,58 @@
  				<h2 class="content-h2">注册</h2>
  				<div class="content-in mt-10">
 					<span class="user-name">用户名：</span>
-					<span><input type="text" /></span>
+					<span><input type="text" id="user-name" value="请输入" /></span>
+					<span class="tip1"></span>
 				</div>
 				<div class="content-in mt-10">
 					<span class="psd">密	码：</span>
-					<span><input type="password" /></span>
+					<span><input type="password" id="psd" /></span>
+					<span class="tip2"></span>
 				</div>
 				<div class="content-in mt-10">
 					<ul class="huadong"><li class="active">弱</li><li>中</li><li>强</li></ul>
 				</div>
 				<div class="content-in mt-10">
 					<span>确认密码：</span>
-					<span><input type="password" /></span>
+					<span><input type="password" id="psd1" /></span>
+					<span class="tip3"></span>
 				</div>
 				<div class="content-in-btn mt-10">
 				<input type="button" class="btn" value="注册" />
 				</div>
 				
  			</div>
+			<script>
+				$(function(){
+					$('#user-name').focus(function(){
+					   $('#user-name').val('');
+					});
+					$('#user-name').blur(function(){
+						if($('#user-name').val()==''){
+							$('#user-name').val('请输入')
+						}else{
+							$('.tip1').html('*不符合规则');
+						}
+					});
+					$('#psd').blur(function(){
+						if($('#user-name').val()==''){
+							$('.tip2').html('*不符合规则');
+						}else{
+							$('.huadong li').eq(1).addClass('active');
+							$('.huadong li').eq(2).addClass('active');
+						}
+					});
+					$('#psd1').blur(function(){
+						if($('#user-name').val()==''){
+							$('.tip3').html('*不符合规则');
+						}else{
+							$('.tip3').html('*不符合规则');
+						}
+					});
+				})
+				function searchProductClassbyName(val){
+					alert(val)
+				}
+			</script>
  		</body>
  </html>
