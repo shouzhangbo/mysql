@@ -1,7 +1,7 @@
 
 .content{  margin: 0px auto;width:500px;height:500px;}
 .content-h2{margin: 0px auto;width:100px;height:80px;border-bottom:5px solid red;text-align:center;line-height:100px;}
-.content-in{margin:0px auto;width:260px;he  ght: 15px;}
+.content-in{margin:0px auto;width:360px;height: 15px;}
 .content-in-1{margin:0px auto;width:330px;height: 15px;}
 .content-in-btn{margin:0px auto;width:160px;margin-top:20px;height:20px;border:none;text-align:center;line-height:20px;}
 .content-in-btn input{background:red;}
@@ -14,3 +14,5 @@
 .forget {text-align:center;background:rgb(187, 180, 180);border:15px solid rgb(187, 180, 180);}
 .content .content-in-btn-1{width:255px;}
 .content-in-btn-1 .btn-1{width:116px}
+.psd{letter-spacing: 6px;}
+.user-name{letter-spacing: 4px;}

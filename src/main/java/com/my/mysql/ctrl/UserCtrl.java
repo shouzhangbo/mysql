@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.my.mysql.form.BaseForm.resigerForm;
-import com.magus.codeserver.constants.GlobalConstant;
-import com.magus.codeserver.controllers.ObjectError;
 import com.my.mysql.form.ResigerForm;
 import com.my.mysql.model.BaseUser;
 import com.my.mysql.model.UserInfo;
