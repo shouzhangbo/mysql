@@ -31,6 +31,7 @@ public class BaseUser {
 	private Date UpdateAt;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "baseInfo")
 	private Set<UserInfo> userInfo;
+	
 	public Integer getBaseUserId() {
 		return baseUserId;
 	}

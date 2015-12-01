@@ -1,4 +1,4 @@
-package com.my.mysql.service;
+package com.my.mysql.service.impl;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.my.mysql.dao.BaseDao;
+import com.my.mysql.service.BaseService;
 import com.my.mysql.util.PageInfo;
 
 //import com.test.bo.dao.BaseDao;
