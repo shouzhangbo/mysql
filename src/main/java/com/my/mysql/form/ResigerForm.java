@@ -4,10 +4,17 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class ResigerForm extends BaseForm{
 
-	@NotEmpty(message = "用户名不能为空！", groups = {resigerForm.class})
+	@NotEmpty(message = "用户名不能为空！", groups = {resigerForm.class,isResigerForm.class})
 	private String userName;
 	@NotEmpty(message = "密码不能为空！", groups = {resigerForm.class})
 	private String baseUserPsd;
+	@NotEmpty(message = "用户id不能为空！", groups = {perfectRegister.class})
+	private Integer userId;
+	@NotEmpty(message = "用户手机号不能为空！", groups = {perfectRegister.class})
+	private String userMobile;
+	@NotEmpty(message = "邮件地址不能为空！", groups = {perfectRegister.class})
+	private String userEmail;
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -19,5 +26,23 @@ public class ResigerForm extends BaseForm{
 	}
 	public void setBaseUserPsd(String baseUserPsd) {
 		this.baseUserPsd = baseUserPsd;
+	}
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	public String getUserMobile() {
+		return userMobile;
+	}
+	public void setUserMobile(String userMobile) {
+		this.userMobile = userMobile;
+	}
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 }

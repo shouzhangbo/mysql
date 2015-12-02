@@ -16,7 +16,7 @@
         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
         
     <!-- 启动自动扫描 该包下所有的Bean(@Controller) -->
-  	  <context:component-scan base-package="com.test.mysql">  
+  	  <context:component-scan base-package="com.my.mysql">  
          <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />  
 		 <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" /> 
 		 <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />  
@@ -27,7 +27,8 @@
     <!--  
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	-->
-	
+	<bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 	<!-- 处理JSON -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">      
         <property name="messageConverters">      
@@ -35,6 +36,12 @@
                 <ref bean="mappingJacksonHttpMessageConverter" />      
             </list>      
         </property>      
+        <property name="webBindingInitializer">
+            <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+                <!--                <property name="conversionService" ref="conversionService" />-->
+                <property name="validator" ref="validator" />
+            </bean>
+        </property>
     </bean>  
     <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">    
 	    <property name="supportedMediaTypes">    
