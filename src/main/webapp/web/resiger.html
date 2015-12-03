@@ -29,41 +29,75 @@
 					<span class="tip3"></span>
 				</div>
 				<div class="content-in-btn mt-10">
-				<input type="button" class="btn" value="注册" />
+				<input type="button" class="btn btn-submit" value="注册" />
 				</div>
 				
  			</div>
 			<script>
 				$(function(){
+					var isRe = true;
+					
 					$('#user-name').focus(function(){
 					   $('#user-name').val('');
 					});
 					$('#user-name').blur(function(){
 						if($('#user-name').val()==''){
 							$('#user-name').val('请输入')
+							isRe = false;
 						}else{
-							$('.tip1').html('*不符合规则');
+							$.ajax({
+								type: "POST",
+								url: "http://localhost:8080/mysql/isRegister.json",
+								data:{
+									userName:$('#user-name').val()
+								},
+								dataType: "json",
+								success: function(data){
+									console.log(data);
+									if("0000"==data.respCode){
+										$('.tip1').html('恭喜，可用');
+										isRe = true;
+									}else{
+										$('.tip1').html('*不符合规则');
+										isRe = false;
+									}
+								},
+								error:function(){     
+							      alert('网络异常。')
+							      isRe = false;
+							    }
+							});
 						}
 					});
 					$('#psd').blur(function(){
-						if($('#user-name').val()==''){
+						if($('#psd').val()==''){
 							$('.tip2').html('*不符合规则');
+							isRe = false;
 						}else{
 							$('.huadong li').eq(1).addClass('active');
 							$('.huadong li').eq(2).addClass('active');
+							isRe = true;
 						}
 					});
 					$('#psd1').blur(function(){
-						if($('#user-name').val()==''){
+						if($('#psd1').val()==''){
 							$('.tip3').html('*不符合规则');
+							isRe = false;
 						}else{
 							$('.tip3').html('*不符合规则');
+							isRe = true;
 						}
 					});
-				})
-				function searchProductClassbyName(val){
-					alert(val)
-				}
+					//提交注册
+					$('.btn-submit').click(function(){
+						if(!isRe){
+							alert('请完善信息');
+						}else{
+							window.location.href = 'perfect.html';
+						}
+					});
+				});
+				
 			</script>
  		</body>
  </html>
