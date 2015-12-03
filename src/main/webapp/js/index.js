@@ -215,7 +215,7 @@ $(function(){
 		}else{
 			return;	
 		}
-		var offset = $('.fix-left-ul li').eq(0).find('.fix-p').offset(), flyer = $("<img src='images/youxi-02.png' class='move-sp'>");
+		var offset = $('.fix-left-ul li').eq(0).find('.fix-p').offset(), flyer = $("<img src='../images/youxi-02.png' class='move-sp'>");
 		flyer.fly({
 			start: {
 				left: event.pageX,
