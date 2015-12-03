@@ -5,7 +5,11 @@ a{text-decoration:none;}
 .mt-10{margin-top:10px;}
 .mr-10{margin-right:10px;}
 .font14{font-size:14px;}
-.head{width:100%;height:50px;background:red;}
+.head{width:100%;height:50px;background:red;line-height:50px;}
+.head-ul{margin-right:20px;}
+.head-ul li{list-style:none;float:left;margin-left:10px;}
+
+
 .main{margin:0px auto;width:100%;background:#EAEAF3;}
 .main-sort{margin:0px auto;width:calc(100% - 300px);height:100px;background:none;position:relative;}
 .sort-logo{width:200px;margin-left:50px;}
@@ -22,7 +26,7 @@ a{text-decoration:none;}
 .shopcar-mount .mount{color:#FFFFFF;font-size:14px;text-align:center;line-height:30px;width:25px;height:25px;padding-left: 10px;}
 
 .shopcar-content{position:absolute;top:96px;left:745px;background:none;border:2px solid #BDBDD0;border-top:none;display:none;z-index:9999; background:#EAEAF3;}
-.shopcar-content li{list-style:none;width:300px;height:20px;margin-top:5px;border-top:1px solid #332D03}
+.shopcar-content li{list-style:none;width:300px;height:20px;line-height:20px;border-top:1px solid #332D03}
 .shopcar-content li span{width:50%;margin-left: 80px;}
 .shopcar-title{width:180px;height:35px;border-top:2px solid #BDBDD0;text-align:center;line-height:35px;}
 .shopcar-content-emp{width:300px;height:50px;text-align:center;line-height:50px;border-top: 2px solid #BDBDD0;}

@@ -1,4 +1,11 @@
 $(function(){
+	//是否登录
+	isLogin();
+	//退出
+	$('.tuichu').click(function(){
+		setLocalStorage("username",null);
+		isLogin();
+	});
 	//搜索栏
 	$('.sort-up li').click(function(){
 		$('.sort-up li').removeClass('ok');
@@ -199,36 +206,53 @@ $(function(){
 		rightSin();
 	});
 	//快报
-	
-	
-	
-	
 		
-	
 });
-	$('.btn-add-shop').on('click',test);
-	function test(event) {
-		
-		if(parseInt($(this).siblings('.shop-input').val())>0){
-			$('.shopbar-mount').html(parseInt($(this).siblings('.shop-input').val())+parseInt($('.shopbar-mount').html()));	
-			$('.mount').html(parseInt($(this).siblings('.shop-input').val())+parseInt($('.mount').html()));
-		}else{
-			return;	
-		}
-		var offset = $('.fix-left-ul li').eq(0).find('.fix-p').offset(), flyer = $("<img src='../images/youxi-02.png' class='move-sp'>");
-		flyer.fly({
-			start: {
-				left: event.pageX,
-				top: event.pageY - $(window).scrollTop()
+//添加购物车
+$('.btn-add-shop').on('click',test);
+function test(event) {
+	if(parseInt($(this).siblings('.shop-input').val())>0){
+		$('.shopbar-mount').html(parseInt($(this).siblings('.shop-input').val())+parseInt($('.shopbar-mount').html()));	
+		$('.mount').html(parseInt($(this).siblings('.shop-input').val())+parseInt($('.mount').html()));
+		//用户，商品id，数量
+		$.ajax({
+			type: "POST",
+			url: "http://localhost:8080/mysql/addShopCar.json",
+			data:{
+				userName:'',
+				productId:1,
+				productCount:1
 			},
-			end: {
-				left: offset.left+40,
-				top: offset.top + 40 - $(window).scrollTop(),
-				width: 30,
-				height: 30
+			dataType: "json",
+			success: function(data){
+				if('0000'==data.respCode){
+					window.location.href="index.html";	
+				}else{
+					alert('登录失败');	
+				}
+			},
+			error:function(){     
+			  alert('网络异常。')
 			}
 		});
+	}else{
+		return;	
 	}
+	
+	var offset = $('.fix-left-ul li').eq(0).find('.fix-p').offset(), flyer = $("<img src='../images/youxi-02.png' class='move-sp'>");
+	flyer.fly({
+		start: {
+			left: event.pageX,
+			top: event.pageY - $(window).scrollTop()
+		},
+		end: {
+			left: offset.left+40,
+			top: offset.top + 40 - $(window).scrollTop(),
+			width: 30,
+			height: 30
+		}
+	});
+}
 
 var len=$('.banner-img li').length;
 var index=$('.banner-img .active').index();
@@ -286,6 +310,18 @@ function rightSin(){
 		$('.ad-img-li').css('left','0px').animate({'left':-235*j+'px'});
 	}else{
 		$('.ad-img-li').animate({'left':-235*j+'px'});
+	}
+}
+
+function isLogin(){
+	var user = window.localStorage.getItem("username");
+	if(user!=''&&user!='null'&&user!=null){
+		$('.un-login').hide();
+		$('.ag-login').show();
+		$('.user-txt').html(user);
+	}else{
+		$('.ag-login').hide();
+		$('.un-login').show();
 	}
 }
 
