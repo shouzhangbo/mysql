@@ -228,13 +228,18 @@ function test(event) {
 				if('0000'==data.respCode){
 					window.location.href="index.html";	
 				}else{
-					alert('登录失败');	
+					alert('登录失败');
 				}
 			},
 			error:function(){     
 			  alert('网络异常。')
 			}
 		});
+		
+		//组建数组
+		var proArr = new Array();
+		var proDate = 
+		proData.push();
 	}else{
 		return;	
 	}
