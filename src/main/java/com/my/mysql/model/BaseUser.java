@@ -25,6 +25,10 @@ public class BaseUser {
 	private String userName;
 	@Column(name = "base_psd",length=128, nullable = false)
 	private String basePsd;
+	@Column(name = "status",length=2)
+	private Integer status;
+	@Column(name = "status_name",length=10)
+	private String statusName;
 	@Column(name = "Create_at", nullable = false)
 	private Date CreateAt;
 	@Column(name = "Update_at", nullable = false)
@@ -67,5 +71,17 @@ public class BaseUser {
 	}
 	public void setUserInfo(Set<UserInfo> userInfo) {
 		this.userInfo = userInfo;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
 	}
 }

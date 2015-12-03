@@ -33,6 +33,10 @@ public class Category {
 	private Date createAt;
 	@Column(name = "update_at")
 	private Date updateAt;
+	@Column(name = "status",length=2)
+	private Integer status;
+	@Column(name = "status_name",length=10)
+	private String statusName;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "category")
 	private Set<CategorySec> categorySec;
@@ -84,5 +88,17 @@ public class Category {
 	}
 	public void setCategorySec(Set<CategorySec> categorySec) {
 		this.categorySec = categorySec;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
 	}
 }

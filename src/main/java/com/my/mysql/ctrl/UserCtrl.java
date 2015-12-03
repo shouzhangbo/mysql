@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.my.mysql.constants.GlobalConstant;
 import com.my.mysql.form.BaseForm.isResigerForm;
 import com.my.mysql.form.BaseForm.resigerForm;
 import com.my.mysql.form.BaseForm.perfectRegister;
@@ -94,6 +95,8 @@ public class UserCtrl {
 		BaseUser user = new BaseUser();
 		user.setBasePsd(CommUtil.MD5(userForm.getBaseUserPsd()));
 		user.setUserName(userForm.getUserName());
+		user.setStatus(GlobalConstant.okInt);
+		user.setStatusName(GlobalConstant.oKStatusName);
 		user.setCreateAt(new Date());
 		user.setUpdateAt(new Date());
 		baseUserService.save(user);

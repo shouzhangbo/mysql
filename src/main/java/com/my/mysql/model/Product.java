@@ -32,6 +32,11 @@ public class Product {
 	private Date createAt;
 	@Column(name = "update_at")
 	private Date updateAt;
+	@Column(name = "product_img_first",length=32)
+	private String productImgFirst;
+	@Column(name = "product_img",length=512)
+	private String productImg;
+	
 	
 	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE }, optional = true)
 	@JoinColumn(name = "brand_id")
@@ -111,6 +116,22 @@ public class Product {
 
 	public void setCategoryThr(CategoryThr categoryThr) {
 		this.categoryThr = categoryThr;
+	}
+
+	public String getProductImgFirst() {
+		return productImgFirst;
+	}
+
+	public void setProductImgFirst(String productImgFirst) {
+		this.productImgFirst = productImgFirst;
+	}
+
+	public String getProductImg() {
+		return productImg;
+	}
+
+	public void setProductImg(String productImg) {
+		this.productImg = productImg;
 	}
 	
 }

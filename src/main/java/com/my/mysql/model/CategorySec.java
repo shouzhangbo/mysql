@@ -34,7 +34,10 @@ public class CategorySec {
 	private Date createAt;
 	@Column(name = "update_at")
 	private Date updateAt;
-	
+	@Column(name = "status",length=2)
+	private Integer status;
+	@Column(name = "status_name",length=10)
+	private String statusName;
 	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE }, optional = true)
 	@JoinColumn(name = "category_id")
 	private Category category;
@@ -95,5 +98,17 @@ public class CategorySec {
 	}
 	public void setCategoryThr(Set<CategoryThr> categoryThr) {
 		this.categoryThr = categoryThr;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
 	}
 }

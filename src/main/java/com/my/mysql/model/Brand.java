@@ -25,6 +25,10 @@ public class Brand {
 	private String brandName;
 	@Column(name = "brand_desc",length=512)
 	private String brandDesc;
+	@Column(name = "status",length=2)
+	private Integer status;
+	@Column(name = "status_name",length=10)
+	private String statusName;
 	@Column(name = "create_at")
 	private Date createAt;
 	@Column(name = "update_at")
@@ -68,5 +72,17 @@ public class Brand {
 	}
 	public void setProduct(Set<Product> product) {
 		this.product = product;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public String getStatusName() {
+		return statusName;
+	}
+	public void setStatusName(String statusName) {
+		this.statusName = statusName;
 	}
 }
