@@ -17,6 +17,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class ServiceAspect {
 
+//	http://www.cnblogs.com/davidwang456/p/4013631.html  学习
+	
 	//配置切入点,该方法无方法体,主要为方便同类中其他方法使用此处配置的切入点
 		@Pointcut("execution(* com.my.mysql..service..*.*(..))")
 		public void aspect(){	}

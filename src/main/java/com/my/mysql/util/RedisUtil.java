@@ -12,6 +12,9 @@ import redis.clients.jedis.ShardedJedisPool;
 
 public class RedisUtil {
 
+//	http://www.open-open.com/lib/view/open1385173126448.html redis  api介绍
+//	http://www.cnblogs.com/edisonfeng/p/3571870.html
+	
 	private Jedis jedis;//非切片额客户端连接
     private JedisPool jedisPool;//非切片连接池
 	private ShardedJedis shardedJedis;//切片额客户端连接
@@ -56,14 +59,33 @@ public class RedisUtil {
         // 构造池 
         shardedJedisPool = new ShardedJedisPool(config, shards); 
     } 
+    /**
+     * 判断key是否存在
+     * @param key
+     * @return
+     */
+    public boolean isKeyExt(String key){
+    	 return shardedJedis.exists(key);
+    }
+   
     //String
     //List
-    public void addList(String key){
-    	shardedJedis.lpush(key, "ArrayList"); 
+    public void addList(String key,String value){
+    	shardedJedis.lpush(key, value); 
     }
-    public void queryList(String key){
-    	List<String> list = (List<String>)shardedJedis.lrange(key, 0, -1);
+    public List<String> queryListAll(String key){
+    	if(!shardedJedis.exists(key)){
+    		return null;
+    	}
+    	return  shardedJedis.lrange(key, 0, -1);
     }
+    public void update(String key,int index,String value){
+    	shardedJedis.lset(key, index, value);
+    }
+    public void delete(String key,String value){
+    	shardedJedis.lrem(key, 0, value);
+    }
+    
     //Set
     //Map
 }
