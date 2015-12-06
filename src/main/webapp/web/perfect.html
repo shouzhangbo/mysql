@@ -2,30 +2,78 @@
  <html>
        <head>
           <meta charset="utf-8">
-          <title>first html5 page</title>
-          <link rel="stylesheet" href="../css/index.css">
+          <title>xxx完善信息</title>
+          <link rel="stylesheet" href="../css/user.css">
           <link rel="stylesheet" href="../css/global.css">
  		</head>
  		<body>
- 			<div class="content">
+        	<div class="head"></div>
+ 			<div class="content content-user">
  				<h2 class="content-h2">完善信息</h2>
  				<div class="content-in mt-10">
 					<span>邮箱地址：</span>
-					<span><input type="text" /></span>
+					<span><input class="inp inp-email" type="text" value="请输入邮件地址" /></span>
+					<span class="tip1"></span>
 				</div>
 				<div class="content-in mt-10">
 					<span>手机号码：</span>
-					<span><input type="password" /></span>
+					<span><input type="text" class="inp inp-mobile" value="请输入手机号" /></span>
+					<span class="tip2"></span>
 				</div>
 				<div class="content-in mt-10">
 					<span>常用地址：</span>
-					<span><input type="password" /></span>
+					<span><input type="text" class="inp inp-ads" value="请输入常用地址" /></span>
+					<span class="tip3"></span>
 				</div>
 				<div class="content-in-btn content-in-btn-1 mt-10">
-				<input type="button" class="btn" value="提交" />
-				<a href="" class="fr">跳过</a>
+				<input type="button" class="btn btn-submit" value="提交" />
+				<a href="index.html" class="fr cl-up">跳过</a>
 				</div>
 				
  			</div>
+ 		 <script type="text/javascript" src="../js/jquery-1.7.min.js"></script>
+ 		 <script>
+ 		 	$(function(){
+ 		 		var flag = true;
+ 		 		$('.inp-email').focus(function(){
+ 		 			 $('.inp-email').val('');
+ 		 		});
+ 		 		$('.inp-email').blur(function(){
+ 		 			if($('.inp-email').val()==''){
+						$('.inp-email').val('请输入邮件地址')
+					}else{
+						//校验email
+						flag = false;
+					}
+ 		 		});
+ 		 		$('.inp-mobile').focus(function(){
+		 			 $('.inp-mobile').val('');
+		 		});
+		 		$('.inp-mobile').blur(function(){
+		 			if($('.inp-mobile').val()==''){
+						$('.inp-mobile').val('请输入手机号')
+						
+					}else{
+						//校验mobile
+						flag = false;
+					}
+		 		});
+		 		$('.inp-ads').focus(function(){
+		 			 $('.inp-ads').val('');
+		 		});
+		 		$('.inp-ads').blur(function(){
+		 			if($('.inp-ads').val()==''){
+						$('.inp-ads').val('请输入常住地址')
+						
+					}else{
+						//校验email
+						flag = false;
+					}
+		 		});
+ 		 		$('.btn-submit').click(function(){
+ 		 			window.location.href="index.html";
+ 		 		});
+ 		 	});
+ 		 </script>
  		</body>
  </html>

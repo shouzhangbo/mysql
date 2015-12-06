@@ -1,0 +1,28 @@
+@charset "utf-8";
+/**用户页面***/
+body{margin:0px;padding:0px;}
+*{margin:0px;padding:0px;font-size:10px;}
+a{text-decoration:none;}
+.font14{font-size:14px;}
+.head{width:100%;height:50px;background:red;}
+
+.content{  margin: 0px auto;width:500px;height:500px;}
+.content-user{border-radius:10px;width:600px;height: 290px;margin:0px auto;margin-top: 50px;background: #E4E4E4;}
+.content-h2{margin: 0px auto;width:100%;height:80px;border-bottom:5px solid red;text-align:center;line-height:100px;letter-spacing: 20px;font-size: 25px;color: blue;}
+.content-in{margin:0px auto;width:260px;height:15px;}
+.login-res{margin-right:45px;}
+.content-in-1{margin:0px auto;width:330px;height: 15px;}
+.content-in-btn{margin:0px auto;width:160px;margin-top:20px;height:20px;border:none;text-align:center;line-height:20px;}
+.content-in-btn input{background:red;}
+.btn{width:170px;border:none;height:30px;cursor:pointer;border-radius: 5px;}
+
+.huadong{margin-left:0px}
+.huadong li{list-style:none;float:left;width:70px;border-top:15px solid rgb(187, 180, 180);margin-left:1px;text-align:center}
+.huadong  .active{border-top:15px solid red;}
+
+.forget {text-align:center;background:rgb(187, 180, 180);border:15px solid rgb(187, 180, 180);}
+.content .content-in-btn-1{width:255px;}
+.content-in-btn-1 .btn-1{width:116px}
+.psd{letter-spacing:4px;}
+.tip1{color:red;font-size:12px;}
+.user-name{letter-spacing: 3px;}
