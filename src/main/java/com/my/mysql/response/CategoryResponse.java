@@ -2,17 +2,18 @@ package com.my.mysql.response;
 
 import java.util.List;
 
-import com.my.mysql.model.Category;
-import com.my.mysql.model.CategorySec;
+import com.my.mysql.response.bean.CategoryBeans;
 
-public class CategoryResponse extends BaseResponse {
-	private List<Category> list;
+public class CategoryResponse extends BaseResponse{
 
-	public List<Category> getList() {
+	private List<CategoryBeans> list;
+
+	public List<CategoryBeans> getList() {
 		return list;
 	}
 
-	public void setList(List<Category> list) {
+	public void setList(List<CategoryBeans> list) {
 		this.list = list;
 	}
+	
 }

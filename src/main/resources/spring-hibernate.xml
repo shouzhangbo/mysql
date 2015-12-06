@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
  <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -13,16 +12,19 @@
         http://www.springframework.org/schema/aop
     	http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
     	http://www.springframework.org/schema/tx
-    	http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
-        ">
+    	http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
-	<!-- Hibernate4 -->
-    <context:component-scan base-package="com.my.mysql">  
-	    <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
- 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />  
-	</context:component-scan> 
+	 <!-- 启动自动扫描 该包下所有的Bean(@Controller)   -->
+  	 <context:component-scan base-package="com.my.mysql">  
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />  
+		 <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" /> 
+		 <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+     </context:component-scan>  
+  <context:component-scan base-package="com.my.mysql.aop"/>
+  
+    <!-- 激活自动代理功能 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+    
 	<!-- 加载资源文件  其中包含变量信息，必须在Spring配置文件的最前面加载，即第一个加载
 	<context:property-placeholder location="classpath:persistence-postgresql.properties" />
 	-->

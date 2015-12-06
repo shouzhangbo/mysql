@@ -34,7 +34,8 @@ public class UserCtrl {
 	@Autowired
 	public BaseUserService baseUserService;
 	@Autowired
-	public UserInfoService userInfiService;
+	public UserInfoService userInfoService;
+	
 	/***
 	 * 判断是否注册
 	 * @param userForm
@@ -123,7 +124,8 @@ public class UserCtrl {
 		}
 		userInfo.setCreateAt(new Date());
 		userInfo.setUpdateAt(new Date());
-		userInfiService.save(userInfo);
+		userInfoService.save(userInfo);
 		return baseRes;
 	}
+	
 }

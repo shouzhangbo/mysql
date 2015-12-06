@@ -1,6 +1,10 @@
 package com.my.mysql.ctrl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,11 +32,18 @@ import com.my.mysql.model.Product;
 import com.my.mysql.response.BaseResponse;
 import com.my.mysql.response.CategoryResponse;
 import com.my.mysql.response.ProductResponse;
+import com.my.mysql.response.bean.CategoryBeans;
+import com.my.mysql.response.bean.CategorySecBeans;
+import com.my.mysql.response.bean.CategoryThrBeans;
+import com.my.mysql.response.bean.ProductBeans;
 import com.my.mysql.service.BrandService;
 import com.my.mysql.service.CategorySecService;
 import com.my.mysql.service.CategoryService;
 import com.my.mysql.service.CategoryThrService;
 import com.my.mysql.service.ProductService;
+import com.my.mysql.util.CommUtil;
+
+import net.sf.cglib.beans.BeanCopier;
 
 @Controller
 public class ProductCtrl {
@@ -250,9 +261,75 @@ public class ProductCtrl {
 		 baseRes.setRespMsg("success");
 		 return baseRes;
 	}
-	
+	/**
+	 * 查询商品种类
+	 * @return
+	 */
+	@RequestMapping(value = "/queryCategory", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
 	public CategoryResponse queryCategory(){
 		CategoryResponse cate = new CategoryResponse();
+		List<CategoryBeans> list = new ArrayList<CategoryBeans>();
+		List<Category> cList = categoryService.findByProperty(Category.class, "status", GlobalConstant.okInt);
+		for(int i=0;i<cList.size();i++){
+			CategoryBeans cb = new CategoryBeans();
+			BeanCopier copier = BeanCopier.create(Category.class, CategoryBeans.class,
+                    false);
+            copier.copy(cList.get(i), cb, null);
+            cb.setSecList(getSecSet(cList.get(i).getCategorySec()));
+            list.add(cb);
+		}
+		cate.setList(list);
+		cate.setRespCode(GlobalConstant.successRespCode);
+		cate.setRespMsg("success");
 		return cate;
+	}
+	@RequestMapping(value = "/queryProduct", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+	public ProductResponse queryCategory(Integer categoryId,Integer cateSecId,Integer cateThrId){
+		ProductResponse p = new ProductResponse();
+		List<ProductBeans> list = new ArrayList<ProductBeans>();
+		List<Product> pList = productService.findByProperty(Product.class, "productStatus", GlobalConstant.okInt);
+		for(Product pro : pList){
+			ProductBeans cb = new ProductBeans();
+			BeanCopier copier = BeanCopier.create(Product.class, ProductBeans.class,
+                    false);
+            copier.copy(pro, cb, null);
+            cb.setBrandName(pro.getBrand().getBrandName());
+            list.add(cb);
+		}
+		p.setList(list);
+		p.setRespCode(GlobalConstant.successRespCode);
+		p.setRespMsg("success");
+		return p;
+	}
+	/**
+	 * 
+	 * @param set
+	 * @return
+	 */
+	public static Set<CategorySecBeans> getSecSet(Set<CategorySec> set){
+		Set<CategorySecBeans> list = new HashSet<CategorySecBeans>();
+		for(CategorySec obj1:set){
+			CategorySecBeans obj2 = new CategorySecBeans();
+			BeanCopier copier = BeanCopier.create(CategorySec.class, CategorySecBeans.class,
+                    false);
+            copier.copy(obj1, obj2, null);
+            obj2.setCategoryThr(getThrSet(obj1.getCategoryThr()));
+			list.add(obj2);
+		}
+		return list;
+	}
+	
+	public static Set<CategoryThrBeans> getThrSet(Set<CategoryThr> set){
+		Set<CategoryThrBeans> list = new HashSet<CategoryThrBeans>();
+		for(CategoryThr obj1:set){
+			CategoryThrBeans obj2 = new CategoryThrBeans();
+			BeanCopier copier = BeanCopier.create(CategoryThr.class, CategoryThrBeans.class,
+                    false);
+            copier.copy(obj1, obj2, null);
+			list.add(obj2);
+		}
+		return list;
 	}
 }

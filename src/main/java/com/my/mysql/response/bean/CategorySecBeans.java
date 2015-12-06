@@ -1,4 +1,4 @@
-package com.my.mysql.response;
+package com.my.mysql.response.bean;
 
 import java.util.Date;
 import java.util.Set;
@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-public class CategorySecResponse {
+public class CategorySecBeans {
 	private Integer cateSecId;
 	private String cateSecName;
 	private String cateSecDesc;
@@ -26,7 +26,7 @@ public class CategorySecResponse {
 	private Integer status;
 	private String statusName;
 	
-	private Set<CategoryThrResponse> categoryThr;
+	private Set<CategoryThrBeans> categoryThr;
 	
 	public Integer getCateSecId() {
 		return cateSecId;
@@ -70,10 +70,10 @@ public class CategorySecResponse {
 	public void setUpdateAt(Date updateAt) {
 		this.updateAt = updateAt;
 	}
-	public Set<CategoryThrResponse> getCategoryThr() {
+	public Set<CategoryThrBeans> getCategoryThr() {
 		return categoryThr;
 	}
-	public void setCategoryThr(Set<CategoryThrResponse> categoryThr) {
+	public void setCategoryThr(Set<CategoryThrBeans> categoryThr) {
 		this.categoryThr = categoryThr;
 	}
 	public Integer getStatus() {
