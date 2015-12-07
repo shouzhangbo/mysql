@@ -46,6 +46,7 @@ import com.my.mysql.util.CommUtil;
 import net.sf.cglib.beans.BeanCopier;
 
 @Controller
+@RequestMapping(value = "/category")
 public class ProductCtrl {
 
 	@Autowired
@@ -66,7 +67,7 @@ public class ProductCtrl {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = "/addCategory", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "addCategory", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public BaseResponse addCategory(@Validated({addCategoryForm.class}) ProductForm productForm, 
 			BindingResult result,HttpServletRequest request,HttpServletResponse response){
@@ -105,7 +106,7 @@ public class ProductCtrl {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = "/addBrand", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "addBrand", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public BaseResponse addBrand(@Validated({addProductForm.class}) ProductForm productForm, 
 			BindingResult result,HttpServletRequest request,HttpServletResponse response){
@@ -143,7 +144,7 @@ public class ProductCtrl {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = "/addProduct", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "addProduct", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public BaseResponse addProduct(@Validated({addBrandForm.class}) ProductForm productForm, 
 			BindingResult result,HttpServletRequest request,HttpServletResponse response){
@@ -188,7 +189,7 @@ public class ProductCtrl {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = "/addCateSec", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "addCateSec", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public BaseResponse addCateSec(@Validated({addCateSecForm.class}) ProductForm productForm, 
 			BindingResult result,HttpServletRequest request,HttpServletResponse response){
@@ -229,7 +230,7 @@ public class ProductCtrl {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = "/addCateThr", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "addCateThr", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public BaseResponse addCateThr(@Validated({addCateSecForm.class}) ProductForm productForm, 
 			BindingResult result,HttpServletRequest request,HttpServletResponse response){
@@ -265,7 +266,7 @@ public class ProductCtrl {
 	 * 查询商品种类
 	 * @return
 	 */
-	@RequestMapping(value = "/queryCategory", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "queryCategory", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
 	public CategoryResponse queryCategory(){
 		CategoryResponse cate = new CategoryResponse();
@@ -284,7 +285,7 @@ public class ProductCtrl {
 		cate.setRespMsg("success");
 		return cate;
 	}
-	@RequestMapping(value = "/queryProduct", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "queryProduct", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
 	public ProductResponse queryCategory(Integer categoryId,Integer cateSecId,Integer cateThrId){
 		ProductResponse p = new ProductResponse();

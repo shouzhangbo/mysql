@@ -22,7 +22,7 @@ public class TestAop {
 	@Autowired
 	private UserInfoService userService;
 	
-	@Test
+//	@Test
 	public void test(){
 		UserInfo user = new UserInfo();
 		user.setUpdateAt(new Date());

@@ -46,7 +46,7 @@ import com.my.mysql.util.CommUtil;
 import net.sf.cglib.beans.BeanCopier;
 
 @Controller
-public class ProductCtrl {
+public class BGProductCtrl {
 
 	@Autowired
 	private CategoryService categoryService;
@@ -70,6 +70,7 @@ public class ProductCtrl {
     @ResponseBody
     public BaseResponse addCategory(@Validated({addCategoryForm.class}) ProductForm productForm, 
 			BindingResult result,HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse baseRes = new BaseResponse();
 		 try {
 	            if (result.hasErrors()) {
@@ -97,6 +98,23 @@ public class ProductCtrl {
 		 
 		 return baseRes;
 	}
+	@RequestMapping(value = "/deletCategory", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public BaseResponse deletCategory(ProductForm productForm, HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*" );
+		BaseResponse baseRes = new BaseResponse();
+		System.out.println(productForm.getCategoryId());
+		 Category c = categoryService.findById(Category.class, productForm.getCategoryId());
+		 categoryService.deleteByProperty(Category.class, "categoryName", c.getCategoryName());
+//		 if(!CommUtil.isEmpty(c)){
+//			 System.out.println("dddddddd");
+//			 categoryService.delete(c);
+//			 baseRes.setRespCode(GlobalConstant.successRespCode);
+//			 baseRes.setRespMsg("success");
+//			 return baseRes;
+//		 }
+		 return baseRes;
+	}
 	/***
 	 * 添加品牌
 	 * @param productForm
@@ -109,6 +127,7 @@ public class ProductCtrl {
     @ResponseBody
     public BaseResponse addBrand(@Validated({addProductForm.class}) ProductForm productForm, 
 			BindingResult result,HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse baseRes = new BaseResponse();
 		 try {
 	            if (result.hasErrors()) {
@@ -147,6 +166,7 @@ public class ProductCtrl {
     @ResponseBody
     public BaseResponse addProduct(@Validated({addBrandForm.class}) ProductForm productForm, 
 			BindingResult result,HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse baseRes = new BaseResponse();
 		 try {
 	            if (result.hasErrors()) {
@@ -192,6 +212,7 @@ public class ProductCtrl {
     @ResponseBody
     public BaseResponse addCateSec(@Validated({addCateSecForm.class}) ProductForm productForm, 
 			BindingResult result,HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse baseRes = new BaseResponse();
 		 try {
 	            if (result.hasErrors()) {
@@ -233,6 +254,7 @@ public class ProductCtrl {
     @ResponseBody
     public BaseResponse addCateThr(@Validated({addCateSecForm.class}) ProductForm productForm, 
 			BindingResult result,HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse baseRes = new BaseResponse();
 		 try {
 	            if (result.hasErrors()) {
@@ -267,7 +289,8 @@ public class ProductCtrl {
 	 */
 	@RequestMapping(value = "/queryCategory", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-	public CategoryResponse queryCategory(){
+	public CategoryResponse queryCategory(HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*" );
 		CategoryResponse cate = new CategoryResponse();
 		List<CategoryBeans> list = new ArrayList<CategoryBeans>();
 		List<Category> cList = categoryService.findByProperty(Category.class, "status", GlobalConstant.okInt);
