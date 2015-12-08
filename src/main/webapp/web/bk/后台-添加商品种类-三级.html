@@ -55,9 +55,9 @@
             	<h2 class="mb-10 right-h2">商品种类管理</h2>
             </div>
             <ul class="tab">
-            	<li class="active"><a href="">一级管理</a></li>
-                <li><a href="">二级管理</a></li>
-                <li><a href="">三级管理</a></li>
+            	<li>一级管理</li>
+                <li>二级管理</li>
+                <li class="active">三级管理</li>
             </ul>
             <!---左右滑动-->
             <!---搜索模块-->
@@ -98,19 +98,19 @@
             	<table class="table-2 data-tab">
                 	<thead>
                     	<tr>
-                        	<td><input type="checkbox" class="all-select" /><span class="">全选</span></td><td>ID</td><td>种类名称</td><td>种类描述</td><td>状态</td><td>排序</td><td>时间</td><td>操作</td>
+                        	<td><input type="checkbox" class="all-select" /><span class="">全选</span></td><td>ID</td><td>种类名称</td><td>种类描述</td><td>状态</td><td>排序</td><td>时间</td><td>上级</td><td>操作</td>
                         </tr>
                     </thead>
                     <tbody>
                     <!-- -->
                     	<tr>
-                        	<td><input type="checkbox" /><td>序号11</td><td>序号12</td><td>序号13</td><td>序号14</td><td>序号15</td><td>序号16</td><td><a href="javascript:;" class="check">查看</a>|<a href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
+                        	<td><input type="checkbox" /><td>序号11</td><td>序号12</td><td>序号13</td><td>序号14</td><td>序号15</td><td>序号16</td><td>手机</td><td><a href="javascript:;" class="check">查看</a>|<a href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
                         </tr>
                         <tr>
-                        	<td><input type="checkbox" /><td>序号21</td><td>序号22</td><td>序号23</td><td>序号24</td><td>序号25</td><td>序号26</td><td><a href="javascript:;" class="check">查看</a>|<a  href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
+                        	<td><input type="checkbox" /><td>序号21</td><td>序号22</td><td>序号23</td><td>序号24</td><td>序号25</td><td>序号26</td><td>手机</td><td><a href="javascript:;" class="check">查看</a>|<a  href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
                         </tr>
                         <tr>
-                        	<td><input type="checkbox" /><td>序号31</td><td>序号32</td><td>序号33</td><td>序号34</td><td>序号35</td><td>序号36</td><td><a href="javascript:;" class="check">查看</a>|<a  href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
+                        	<td><input type="checkbox" /><td>序号31</td><td>序号32</td><td>序号33</td><td>序号34</td><td>序号35</td><td>序号36</td><td>手机</td><td><a href="javascript:;" class="check">查看</a>|<a  href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
                         </tr>
                         
                     </tbody>
@@ -190,6 +190,14 @@
                             </select>
                         </td>
                     </tr>
+                    <tr>
+                    	<td align="right">上级：</td>
+                        <td align="left">
+                        	<select class="inp alert-inp">
+                            	<option value="1">手机</option>
+                                <option value="0">电脑</option>
+                            </select>
+                        </td>
                     </tr>
                     <!--
                     <tr>

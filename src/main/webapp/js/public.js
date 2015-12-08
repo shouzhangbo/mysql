@@ -6,6 +6,15 @@ function setCookie(name,value)
 	exp.setTime(exp.getTime() + Days*24*60*60*1000);
 	document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
 }
+function setCookie(name, value, hours, path) {
+	var name = escape(name);
+	var value = escape(value);
+	var expires = new Date();
+	expires.setTime(expires.getTime() + hours * 3600000);
+	path = path == "" ? "" : ";path=" + path;
+	_expires = (typeof hours) == "string" ? "" : ";expires=" + expires.toUTCString();
+	document.cookie = name + "=" + value + _expires + path;
+}
 //读取cookies
 function getCookie(name)
 {

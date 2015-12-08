@@ -2,19 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>后台首页</title>
+<title>品牌管理</title>
 <link rel="stylesheet" type="text/css" MIME-type="text/css" href="../../css/public.css"/>
 <link rel="stylesheet" type="text/css" MIME-type="text/css" href="../../css/houtai.css"/>
 <script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="../../js/houtai.js"></script>
+<script type="text/javascript" src="../../js/brand.js"></script>
 </head>
 
 <body>
 	<div class="head">
 		<div class="fl sys">XXXXXXXX管理系统</div>
 		<div class="fr user">
-			<span>退出</span>
-			<span>用户中心</span>
+        	欢迎您，<span><a href="">shieryuedebojue</a></span>
+			<span><a href="">退出</a></span>
 		</div>
 	</div>
 	<div class="content">
@@ -23,7 +23,7 @@
 			<dl>
 				<dt>用户管理<p class="fr">>></p></dt>
 				<dd>用户管理1</dd>
-				<dd>用户管理2</dd>
+				<dd class="active">用户管理2</dd>
 				<dd>用户管理3</dd>
 				<dd>用户管理4</dd>
 			</dl>
@@ -52,13 +52,15 @@
         <!--左侧结束-->
 		<div class="fr right">
 			<div class="right-head pt-10 pl-10">
-            	<h2 class="mb-10 right-h2">商品种类管理</h2>
+            	<h2 class="mb-10 right-h2">品牌管理</h2>
             </div>
+            <!--
             <ul class="tab">
-            	<li class="active"><a href="">一级管理</a></li>
-                <li><a href="">二级管理</a></li>
-                <li><a href="">三级管理</a></li>
+            	<li class="active">一级管理</li>
+                <li>二级管理</li>
+                <li>三级管理</li>
             </ul>
+            -->
             <!---左右滑动-->
             <!---搜索模块-->
             <div class="search-content">
@@ -98,19 +100,21 @@
             	<table class="table-2 data-tab">
                 	<thead>
                     	<tr>
-                        	<td><input type="checkbox" class="all-select" /><span class="">全选</span></td><td>ID</td><td>种类名称</td><td>种类描述</td><td>状态</td><td>排序</td><td>时间</td><td>操作</td>
+                        	<td><input type="checkbox" class="all-select" /><span class="">全选</span></td>
+                            <td>ID</td><td>名称</td><td>描述</td><td>状态</td><td>logo</td><td>时间</td><td>操作</td>
                         </tr>
                     </thead>
                     <tbody>
                     <!-- -->
                     	<tr>
-                        	<td><input type="checkbox" /><td>序号11</td><td>序号12</td><td>序号13</td><td>序号14</td><td>序号15</td><td>序号16</td><td><a href="javascript:;" class="check">查看</a>|<a href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
+                        	<td><input type="checkbox" /><td>14</td><td>三星</td><td>韩国三星</td><td>上线</td>
+                            <td><img src="../../images/proImg9.jpg" /></td><td>2015-11-12 11:01:00</td>
+                            <td><a href="javascript:;" class="check">查看</a>|<a href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
                         </tr>
-                        <tr>
-                        	<td><input type="checkbox" /><td>序号21</td><td>序号22</td><td>序号23</td><td>序号24</td><td>序号25</td><td>序号26</td><td><a href="javascript:;" class="check">查看</a>|<a  href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
-                        </tr>
-                        <tr>
-                        	<td><input type="checkbox" /><td>序号31</td><td>序号32</td><td>序号33</td><td>序号34</td><td>序号35</td><td>序号36</td><td><a href="javascript:;" class="check">查看</a>|<a  href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
+                       <tr>
+                        	<td><input type="checkbox" /><td>14</td><td>三星</td><td>韩国三星</td><td>上线</td>
+                            <td><img src="../../images/proImg9.jpg" /></td><td>2015-11-12 11:01:00</td>
+                            <td><a href="javascript:;" class="check">查看</a>|<a href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
                         </tr>
                         
                     </tbody>
@@ -170,36 +174,29 @@
         	<table class="table-3">
             	<tbody>
                 	<tr>
-                    	<td align="right">种类名称：</td>
+                    	<td align="right">名称：</td>
                         <td align="left"><input type="text" class="inp file-1"  /></td>
                     </tr>
                     <tr>
-                    	<td align="right">种类描述：</td>
+                    	<td align="right">描述：</td>
                         <td align="left"><input type="text" class="inp file-2"  /></td>
-                    </tr>
-                    <tr>
-                    	<td align="right">排序：</td>
-                        <td align="left"><input type="text" class="inp file-3"  /></td>
                     </tr>
                     <tr>
                     	<td align="right">状态：</td>
                         <td align="left">
-                        	<select class="inp alert-inp">
+                        	<select class="inp alert-inp file-3">
                             	<option value="1">上线</option>
                                 <option value="0">下线</option>
                             </select>
                         </td>
                     </tr>
-                    </tr>
-                    <!--
                     <tr>
                     	<td align="right">上传图片：</td>
-                        <td align="left"><div class="img-content"></div></td>
+                        <td align="left"><div class="img-content file-4"></div></td>
                     </tr>
                      <tr>
                     	<td align="right"><input type="file" class="upImg" /></td>
                     </tr>
-                    -->
                 </tbody>
             </table>
         </div>
@@ -209,6 +206,5 @@
         </div>
     </div>
     <!--弹出框2 结束-->
-    
 </body>
 </html>

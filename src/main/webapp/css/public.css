@@ -3,6 +3,7 @@
 body{margin:0px;padding:0px;}
 *{margin:0px;padding:0px;font-family:"微软雅黑";font-size:14px;}
 
+.hide{display:none;}
 .fl{float:left;}
 .fr{float:right;}
 
@@ -60,3 +61,5 @@ table{border-collapse: collapse;border-spacing: 0;}
 .alertbox-2{width:500px;background:#DEDEDE;margin-left:-250px;margin-top:-300px;display:none;}
 .alertbox-2 .alertbox-btn-content{width:165px;margin:0px auto;}
 .alertbox-2 .alertbox-btn-content{margin-top:10px;margin-bottom:10px;}
+
+.alertbox-2 .img-content img{width:150px;height:100px;}
