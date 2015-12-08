@@ -2,62 +2,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>后台首页</title>
+<title>商品种类管理</title>
 <link rel="stylesheet" type="text/css" MIME-type="text/css" href="../../css/public.css"/>
 <link rel="stylesheet" type="text/css" MIME-type="text/css" href="../../css/houtai.css"/>
 <script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="../../js/houtai.js"></script>
+<script type="text/javascript" src="../../js/public.js"></script>
 </head>
 
 <body>
 	<div class="head">
 		<div class="fl sys">XXXXXXXX管理系统</div>
 		<div class="fr user">
-			<span>退出</span>
-			<span>用户中心</span>
+			欢迎您，<span><a href="">shieryuedebojue</a></span>
+			<span><a href="">退出</a></span>
 		</div>
 	</div>
 	<div class="content">
     	<!--左侧开始-->
 		<div class="left">
-			<dl>
-				<dt>用户管理<p class="fr">>></p></dt>
-				<dd>用户管理1</dd>
-				<dd>用户管理2</dd>
-				<dd>用户管理3</dd>
-				<dd>用户管理4</dd>
-			</dl>
-			<dl>
-				<dt>功能管理<p class="fr">>></p></dt>
-				<dd>用户管理1</dd>
-				<dd>用户管理2</dd>
-				<dd>用户管理3</dd>
-				<dd>用户管理4</dd>
-			</dl>
-			<dl>
-				<dt>权限管理<p class="fr">>></p></dt>
-				<dd>用户管理1</dd>
-				<dd>用户管理2</dd>
-				<dd>用户管理3</dd>
-				<dd>用户管理4</dd>
-			</dl>
-			<dl>
-				<dt>操作管理<p class="fr">>></p></dt>
-				<dd>用户管理1</dd>
-				<dd>用户管理2</dd>
-				<dd>用户管理3</dd>
-				<dd>用户管理4</dd>
-			</dl>
+			
 		</div>
         <!--左侧结束-->
 		<div class="fr right">
 			<div class="right-head pt-10 pl-10">
-            	<h2 class="mb-10 right-h2">商品种类管理</h2>
+            	<h2 class="mb-10 right-h2">商品种类三级管理</h2>
             </div>
             <ul class="tab">
-            	<li>一级管理</li>
-                <li>二级管理</li>
-                <li class="active">三级管理</li>
+            	<li><a href="后台-添加商品种类.html">一级管理</a></li>
+                <li><a href="后台-添加商品种类-二级.html">二级管理</a></li>
+                <li class="active"><a href="后台-添加商品种类-三级.html">三级管理</a></li>
             </ul>
             <!---左右滑动-->
             <!---搜索模块-->
@@ -184,7 +158,7 @@
                     <tr>
                     	<td align="right">状态：</td>
                         <td align="left">
-                        	<select class="inp alert-inp">
+                        	<select class="inp alert-inp file-4">
                             	<option value="1">上线</option>
                                 <option value="0">下线</option>
                             </select>
@@ -193,7 +167,7 @@
                     <tr>
                     	<td align="right">上级：</td>
                         <td align="left">
-                        	<select class="inp alert-inp">
+                        	<select class="inp alert-inp file-5">
                             	<option value="1">手机</option>
                                 <option value="0">电脑</option>
                             </select>

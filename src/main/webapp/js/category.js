@@ -2,6 +2,7 @@
 var serUrl = "http://localhost:8080/mysql/";
 $(function(){
 	initLeft();
+	closeAlert();
 	$('.left dl dd').hide();
 	$('.left dl').eq(0).children('dd').show();
 	$('.left dl').eq(0).children('dt').addClass('ok');
@@ -172,8 +173,21 @@ $('.check').live('click',function(){
 //修改
 $('.update').live('click',function(){
 	var strArr=$(this).parent().prevAll();
-	for(var i=0;i<strArr.length;i++){
-		$('.file-'+i).val(strArr[i].innerHTML);
+	var j=0;
+	for(var i=strArr.length-3;i>=0;i--){
+		j++;
+		$('.file-'+j).attr("disabled",false);
+		if(j==4){
+			for(var m=0;m<$('.file-'+j+' option').length;m++){
+				if($('.file-'+j+' option').eq(m).val()==strArr[i].innerHTML){
+					$('.file-'+j+' option').eq(m).selected = true;
+					break;
+				}
+			}
+		}else{
+			$('.file-'+j).val(strArr[i].innerHTML);
+			$('.file-'+j).html(strArr[i].innerHTML);
+		}
 	}
 	$('.alertbox-2 .btn-ok').addClass('btn-alert-update');
 	$('.alertbox-2').show();
@@ -206,39 +220,7 @@ function deleDate(id){
 		}
 	});	
 }
-//关闭弹出框
-$('.alertbox-close').live('click',function(){
-	$('.alertbox').hide();
-	$('.alertbox-2 .btn-ok').removeClass('btn-add-new');
-	$('.alertbox-2 .btn-ok').removeClass('btn-cancl');
-	$('.alertbox-2 .btn-ok').removeClass('btn-alert-update');
-	$('.alertbox-1 .btn-ok').removeClass('btn-alert-delete');
-	$('.alertbox-2 .btn-ok').val('确认');
-	
-	$('.alertbox-2 .upImg').removeClass('hide');
-	$('.btn-cancl').show();
-	//除去新增
-	for(var i=0;i<5;i++){
-		$('.file-'+i).attr("disabled",false);
-		$('.file-'+i).val('');
-	}
-});
-$('.btn-cancl').live('click',function(){
-	$('.alertbox').hide();	
-	$('.alertbox-2 .btn-ok').removeClass('btn-add-new');
-	$('.btn-ok').removeClass('btn-cancl');
-	$('.alertbox-2 .btn-ok').removeClass('btn-alert-update');
-	$('.alertbox-1 .btn-ok').removeClass('btn-alert-delete');
-	$('.alertbox-2 .btn-ok').val('确认');
-	
-	$('.alertbox-2 .upImg').removeClass('hide');
-	$('.btn-cancl').show();
-	//除去新增
-	for(var i=0;i<5;i++){
-		$('.file-'+i).attr("disabled",false);
-		$('.file-'+i).val('');
-	}
-});
+
 $('.js-btn-close').live('click',function(){
 	$('.alertbox').hide();
 });

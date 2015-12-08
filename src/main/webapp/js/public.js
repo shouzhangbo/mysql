@@ -39,3 +39,100 @@ function setLocalStorage(key,value){
 	var storage = window.localStorage;
 	storage.setItem(key, value);
 }
+function initLeft(){
+	var  LeftMenu=[
+			{"Ico":"dingdan",
+			 "name":"商品管理",
+			 "menu2":
+			 [
+			 	{"name":"商品种类","url":"后台-添加商品种类.html"},
+				{"name":"商品","url":"后台-添加商品.html"},
+				{"name":"品牌","url":"后台-添加品牌.html"}
+			 ]
+			},
+			{"Ico":"dingdan",
+			 "name":"商品管理",
+			 "menu2":
+			 [
+			 	{"name":"商品种类","url":"后台-添加商品种类.html"},
+				{"name":"商品","url":"后台-添加商品.html"},
+				{"name":"品牌","url":"后台-添加品牌.html"}
+			 ]
+			},
+			{"Ico":"dingdan",
+			 "name":"商品管理",
+			 "menu2":
+			 [
+			 	{"name":"商品种类","url":"后台-添加商品种类.html"},
+				{"name":"商品","url":"后台-添加商品.html"},
+				{"name":"品牌","url":"后台-添加品牌.html"}
+			 ]
+			},
+			{"Ico":"dingdan",
+			 "name":"商品管理",
+			 "menu2":
+			 [
+			 	{"name":"商品种类","url":"后台-添加商品种类.html"},
+				{"name":"商品","url":"后台-添加商品.html"},
+				{"name":"品牌","url":"后台-添加品牌.html"}
+			 ]
+			}
+		];
+			var dl = '';
+			for(var i=0;i<LeftMenu.length;i++){
+				dl = dl + '<dl>';
+				dl = dl + '<dt>'+LeftMenu[i].name+'<p class="fr">>></p></dt>'
+				var dd = '';
+				for(var j=0;j<LeftMenu[i].menu2.length;j++){
+					if(i==0&&j==0){
+						dd = dd + '<dd class="active"><a href="'+LeftMenu[i].menu2[j].url+'">'+LeftMenu[i].menu2[j].name+'</a></dd>';
+					}else{
+						dd = dd + '<dd><a href="'+LeftMenu[i].menu2[j].url+'">'+LeftMenu[i].menu2[j].name+'</a></dd>';
+					}
+				}
+				dl = dl + dd;
+				dl = dl + '</dl>';
+			}
+	$('.left').append(dl);
+}
+$('.left dd').live('click',function(){
+	$('.left dd').removeClass('active');
+	$(this).addClass('active');
+});
+function closeAlert(){
+	//关闭弹出框
+	$('.alertbox-close').live('click',function(){
+		$('.alertbox').hide();
+		$('.alertbox-2 .btn-ok').removeClass('btn-add-new');
+		$('.alertbox-2 .btn-ok').removeClass('btn-cancl');
+		$('.alertbox-2 .btn-ok').removeClass('btn-alert-update');
+		$('.alertbox-1 .btn-ok').removeClass('btn-alert-delete');
+		$('.alertbox-2 .btn-ok').val('确认');
+		
+		$('.alertbox-2 .img-content').html('');
+		$('.alertbox-2 .upImg').removeClass('hide');
+		$('.btn-cancl').show();
+		//除去新增
+		for(var i=0;i<5;i++){
+			$('.file-'+i).attr("disabled",false);
+			$('.file-'+i).val('');
+		}
+	});
+	$('.btn-cancl').live('click',function(){
+		$('.alertbox').hide();	
+		$('.alertbox-2 .btn-ok').removeClass('btn-add-new');
+		$('.btn-ok').removeClass('btn-cancl');
+		$('.alertbox-2 .btn-ok').removeClass('btn-alert-update');
+		$('.alertbox-1 .btn-ok').removeClass('btn-alert-delete');
+		$('.alertbox-2 .btn-ok').val('确认');
+		
+		$('.alertbox-2 .img-content').html('');
+		$('.alertbox-2 .upImg').removeClass('hide');
+		$('.btn-cancl').show();
+		//除去新增
+		for(var i=0;i<5;i++){
+			$('.file-'+i).attr("disabled",false);
+			$('.file-'+i).val('');
+		}
+	});	
+}

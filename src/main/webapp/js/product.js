@@ -149,21 +149,45 @@ $('.check').live('click',function(){
 	for(var i=strArr.length-3;i>=0;i--){
 		j++;
 		$('.file-'+j).attr("disabled",true);
-		$('.file-'+j).val(strArr[i].innerHTML);
-		$('.file-'+j).html(strArr[i].innerHTML);
+		if(j==3||j==4){
+			for(var m=0;m<$('.file-'+j+' option').length;m++){
+				if($('.file-'+j+' option').eq(m).val()==strArr[i].innerHTML){
+					$('.file-'+j+' option').eq(m).selected = true;
+					break;
+				}
+			}
+		}else{
+			$('.file-'+j).val(strArr[i].innerHTML);
+			$('.file-'+j).html(strArr[i].innerHTML);
+		}
 	}
 	$('.alert-inp').attr("disabled",true);
 	$('.btn-cancl').hide();
 	$('.btn-ok').attr("onClick",'test();');
 	$('.btn-ok').val('关闭');
 	$('.btn-ok').addClass('btn-cancl');
+	
+	$('.alertbox-2 .upImg').addClass('hide');
 	$('.alertbox-2').show();
 });
 //修改
 $('.update').live('click',function(){
 	var strArr=$(this).parent().prevAll();
-	for(var i=0;i<strArr.length;i++){
-		$('.file-'+i).val(strArr[i].innerHTML);
+	var j=0;
+	for(var i=strArr.length-3;i>=0;i--){
+		j++;
+		$('.file-'+j).attr("disabled",false);
+		if(j==3||j==4){
+			for(var m=0;m<$('.file-'+j+' option').length;m++){
+				if($('.file-'+j+' option').eq(m).val()==strArr[i].innerHTML){
+					$('.file-'+j+' option').eq(m).selected = true;
+					break;
+				}
+			}
+		}else{
+			$('.file-'+j).val(strArr[i].innerHTML);
+			$('.file-'+j).html(strArr[i].innerHTML);
+		}
 	}
 	$('.alertbox-2 .btn-ok').addClass('btn-alert-update');
 	$('.alertbox-2').show();
@@ -204,9 +228,11 @@ $('.alertbox-close').live('click',function(){
 	$('.alertbox-2 .btn-ok').removeClass('btn-alert-update');
 	$('.alertbox-1 .btn-ok').removeClass('btn-alert-delete');
 	$('.alertbox-2 .btn-ok').val('确认');
+	
+	$('.alertbox-2 .upImg').removeClass('hide');
 	$('.btn-cancl').show();
 	//除去新增
-	for(var i=0;i<5;i++){
+	for(var i=0;i<10;i++){
 		$('.file-'+i).attr("disabled",false);
 		$('.file-'+i).val('');
 	}
@@ -217,10 +243,12 @@ $('.btn-cancl').live('click',function(){
 	$('.btn-ok').removeClass('btn-cancl');
 	$('.alertbox-2 .btn-ok').removeClass('btn-alert-update');
 	$('.alertbox-1 .btn-ok').removeClass('btn-alert-delete');
+	
+	$('.alertbox-2 .upImg').removeClass('hide');
 	$('.alertbox-2 .btn-ok').val('确认');
 	$('.btn-cancl').show();
 	//除去新增
-	for(var i=0;i<5;i++){
+	for(var i=0;i<10;i++){
 		$('.file-'+i).attr("disabled",false);
 		$('.file-'+i).val('');
 	}
@@ -294,7 +322,7 @@ function initData(){
 			}
 		},
 		error:function(){     
-		  alert('网络异常。')
+		 // alert('网络异常。')
 		}	
 	});	
 	
@@ -305,57 +333,3 @@ function test(){
 }
 
 
-function initLeft(){
-	var  LeftMenu=[
-			{"Ico":"dingdan",
-			 "name":"商品管理",
-			 "menu2":
-			 [
-			 	{"name":"商品种类","url":"后台-添加商品种类.html"},
-				{"name":"商品","url":"后台-添加商品.html"},
-				{"name":"品牌","url":"后台-添加品牌.html"}
-			 ]
-			},
-			{"Ico":"dingdan",
-			 "name":"商品管理",
-			 "menu2":
-			 [
-			 	{"name":"商品种类","url":"后台-添加商品种类.html"},
-				{"name":"商品","url":"后台-添加商品.html"},
-				{"name":"品牌","url":"后台-添加品牌.html"}
-			 ]
-			},
-			{"Ico":"dingdan",
-			 "name":"商品管理",
-			 "menu2":
-			 [
-			 	{"name":"商品种类","url":"后台-添加商品种类.html"},
-				{"name":"商品","url":"后台-添加商品.html"},
-				{"name":"品牌","url":"后台-添加品牌.html"}
-			 ]
-			},
-			{"Ico":"dingdan",
-			 "name":"商品管理",
-			 "menu2":
-			 [
-			 	{"name":"商品种类","url":"后台-添加商品种类.html"},
-				{"name":"商品","url":"后台-添加商品.html"},
-				{"name":"品牌","url":"后台-添加品牌.html"}
-			 ]
-			}
-		];
-			var dl = '';
-			for(var i=0;i<LeftMenu.length;i++){
-				dl = dl + '<dl>';
-				dl = dl + '<dt>'+LeftMenu[i].name+'<p class="fr">>></p></dt>'
-				var dd = '';
-				for(var j=0;j<LeftMenu[i].menu2.length;j++){
-					dd = dd + '<dd><a href="'+LeftMenu[i].menu2[j].url+'">'+LeftMenu[i].menu2[j].name+'</a></dd>';
-				}
-				dl = dl + dd;
-				dl = dl + '</dl>';
-			}
-	$('.left').append(dl);
-	
-	
-}

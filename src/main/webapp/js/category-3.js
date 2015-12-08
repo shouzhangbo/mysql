@@ -1,7 +1,7 @@
 // JavaScript Document
 var serUrl = "http://localhost:8080/mysql/";
 $(function(){
-	initLeft();
+	
 	$('.left dl dd').hide();
 	$('.left dl').eq(0).children('dd').show();
 	$('.left dl').eq(0).children('dt').addClass('ok');
@@ -308,7 +308,7 @@ function initData(){
 			}
 		},
 		error:function(){     
-		  //alert('网络异常。')
+		  alert('网络异常。')
 		}	
 	});	
 	
