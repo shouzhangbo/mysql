@@ -289,7 +289,7 @@ function initData(){
 			}
 		},
 		error:function(){     
-		  alert('网络异常。')
+		 // alert('网络异常。')
 		}	
 	});	
 	
