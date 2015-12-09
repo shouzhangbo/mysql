@@ -1,27 +1,13 @@
 // JavaScript Document
 var serUrl = "http://localhost:8080/mysql/";
+//初始化搜索数据，全局变量
+var categoryName = "",status=2,start='',end='',pageSize=5,currentPage=1,totalPage=0;
 $(function(){
 	initLeft();
 	closeAlert();
-	$('.left dl dd').hide();
-	$('.left dl').eq(0).children('dd').show();
-	$('.left dl').eq(0).children('dt').addClass('ok');
-	$('.left dl').eq(0).children('dt').children('p').html('<<');
-	$('.left dl').click(function(){
-		if($(this).children('dd').is(":hidden")){
-			$(this).children('dd').show();
-			$(this).children('dt').addClass('ok');
-			$(this).children('dt').children('p').html('<<');
-		}else{
-			$(this).children('dd').hide();
-			$(this).children('dt').removeClass('ok');
-			$(this).children('dt').children('p').html('>>');
-		}
-		
-	})
+	leftClick();
 	//表格初始化
 	initData();
-	
 	//全选
 	$('.all-select').click(function(){
 		if($(this).is(':checked')){
@@ -32,8 +18,6 @@ $(function(){
 			$(".table-2 input[type='checkbox']").removeAttr('checked');
 		}
 	});
-	
-	
 	//切换页签
 	$('.tab li').click(function(){
 			$('.tab li').removeClass('active');
@@ -97,6 +81,17 @@ $(function(){
 		$('.page-data li').removeClass('ok');
 		$('.page-data li').eq(i+1).addClass('ok');
 	});
+});
+//搜索
+$('#search').live('click',function(){
+	console.log('search='+$('#name').val());
+	categoryName = $('#name').val();
+	status=$('#status').val();
+	start=$('#start').val();
+	end=$('#end').val();
+	initData();
+//	initData(categoryName,status,startTime,endTime,pageSize,currentPage);
+//	pageSize=5,currentPage=1;
 });
 //新增-添加
 $('.btn-add-new').live("click", function(){
@@ -253,13 +248,17 @@ function remove(){
 	$('.alertbox-2 .btn-ok').val('确认');
 }
 function initData(){
+	console.log('initDate='+categoryName);
 	$.ajax({
 		type: "POST",
 		url: serUrl+"queryCategory.json",
 		data:{
-			userName:'',
-			productId:1,
-			productCount:1
+			categoryName:categoryName,
+			status:status,
+			startTime:start,
+			endTime:end,
+			pageSize:pageSize,
+			currentPage:currentPage
 		},
 		dataType: "json",
 		success: function(data){
@@ -269,12 +268,12 @@ function initData(){
 			console.log(data);
 			if('0000'==data.respCode){
 				for(var i=0;i<data.list.length;i++){
-					var str = '<tr><td><input type="checkbox" /></td>';
+					var str = '<tr><td><input type="checkbox" />';
 					var tdSt = '<td>';
 					var tdEn = '</td>';
 					var opt = '<td><a href="javascript:;" class="check">查看</a>|<a  href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>';
 					
-					str = str + tdSt + data.list[i].categoryId + tdEn;
+					str = str +(i+1)+ '</td>' + tdSt + data.list[i].categoryId + tdEn;
 					str = str + tdSt + data.list[i].categoryName + tdEn;
 					str = str + tdSt + data.list[i].categoryDesc + tdEn;
 					str = str + tdSt + data.list[i].statusName + tdEn;
@@ -285,6 +284,9 @@ function initData(){
 				}
 				$('.data-tab tbody').remove('tbody');
 				$('.data-tab').append(appe);
+				$('.currentPage').html(currentPage);
+				$('.totalPage').html(data.totalPage);
+				totalPage = data.totalPage;
 			}else{
 				alert('登录失败');
 			}

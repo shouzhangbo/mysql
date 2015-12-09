@@ -31,6 +31,10 @@ public class ProductForm extends BaseForm{
 	private String productImgFirst;
 	private String productImg;
 	
+	//搜索词汇
+	private Integer status;
+	private String startTime;
+	private String endTime;
 	
 	public String getCategoryName() {
 		return categoryName;
@@ -103,5 +107,23 @@ public class ProductForm extends BaseForm{
 	}
 	public void setProductImg(String productImg) {
 		this.productImg = productImg;
+	}
+	public String getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+	public String getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 }

@@ -4,6 +4,11 @@ public class BaseResponse {
 
 	private String respCode = "9000";
 	private String respMsg = "erro";
+	
+	private Integer totalReco;
+	private Integer totalPage;
+	private Integer currentPage;
+	
 	public String getRespCode() {
 		return respCode;
 	}
@@ -16,5 +21,22 @@ public class BaseResponse {
 	public void setRespMsg(String respMsg) {
 		this.respMsg = respMsg;
 	}
-	
+	public Integer getTotalReco() {
+		return totalReco;
+	}
+	public void setTotalReco(Integer totalReco) {
+		this.totalReco = totalReco;
+	}
+	public Integer getTotalPage() {
+		return totalPage;
+	}
+	public void setTotalPage(Integer totalPage) {
+		this.totalPage = totalPage;
+	}
+	public Integer getCurrentPage() {
+		return currentPage;
+	}
+	public void setCurrentPage(Integer currentPage) {
+		this.currentPage = currentPage;
+	}
 }

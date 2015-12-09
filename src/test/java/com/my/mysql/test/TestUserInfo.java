@@ -54,14 +54,19 @@ public class TestUserInfo {
 	}
 	@Test
 	public void testt(){
+		String sql = "from Category where status=:status";
+		Map<String,Object> obj = new HashMap<String,Object>();
+		obj.put("status", 1);
+		int count = categoryService.executeSQL(sql,obj);
+		System.out.println("count="+count);
 //		Category c = categoryService.findById(Category.class, 2);
 //		 System.out.println(c.getCategoryId());
 //		 System.out.println(c.getCategoryName());
 //		 categoryService.delete(c);
 //		 categoryService.deleteByProperty(Category.class, "categoryName","r");
 		 
-		 List<Category> c = categoryService.findByProperty(Category.class, "categoryName","test");
-		 System.out.println("***************"+c.size());
+//		 List<Category> c = categoryService.findByProperty(Category.class, "categoryName","test");
+//		 System.out.println("***************"+c.size());
 		 //		UserInfo u = userService.findById(UserInfo.class, 4);
 //		 userService.delete(u);
 //		 userService.deleteByProperty(UserInfo.class, "userInfoId", 3);

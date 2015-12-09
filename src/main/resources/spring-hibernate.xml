@@ -28,7 +28,7 @@
 	<!-- 加载资源文件  其中包含变量信息，必须在Spring配置文件的最前面加载，即第一个加载
 	<context:property-placeholder location="classpath:persistence-postgresql.properties" />
 	-->
-	<!-- 
+	<!-- 	 -->
 	<bean id="sessionFactory" 
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -47,19 +47,19 @@
 			</props>
 		</property>
 	</bean>
-	 -->
+
 	<!-- 数据库映射 -->
 	<!--  class="org.apache.tomcat.dbcp.dbcp.BasicDataSource" -->
     <!--  class="org.springframework.jdbc.datasource.DriverManagerDataSource"-->
-    <!-- JDBC数据库连接
+    <!-- JDBC数据库连接 -->
 	 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/bob" />
 		<property name="username" value="root" />
 		<property name="password" value="houzhangbo" />
 	</bean> 
-	 -->
-	<!-- 配置Hibernate事务管理器 
+	
+	<!-- 配置Hibernate事务管理器 -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager"
 		abstract="false" lazy-init="default" autowire="default">
@@ -67,7 +67,7 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-   -->
+   
    <!-- 配置事务异常封装 -->
 <!--    <bean id="persistenceExceptionTranslationPostProcessor" 
    	class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" /> -->

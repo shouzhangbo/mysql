@@ -1,5 +1,6 @@
 package com.my.mysql.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -25,6 +26,7 @@ import com.my.mysql.util.PageInfo;
 @SuppressWarnings({"unchecked", "rawtypes"})
 @Service
 public class BaseServiceImpl<T> implements BaseService<T>{
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
 	@Autowired
 	protected BaseDao<T> baseDao;
 	

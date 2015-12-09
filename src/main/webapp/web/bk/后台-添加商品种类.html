@@ -40,20 +40,19 @@
             	<table class="table-1">
                 	<tbody>
                     	<tr>
-                        	<td align="right">用户名：</td>
-                            <td align="left"><input type="text" class="inp inp1" /></td>
-                            <td align="right">用户名：</td>
-                            <td align="left"><input type="text" class="inp inp1" /></td>
-                            <td align="right">用户名：</td>
-                            <td align="left"><input type="text" class="inp inp1" /></td>
+                        	<td align="right">名称：</td>
+                            <td align="left"><input type="text" class="inp inp1" id="name" /></td>
+                            <td align="right">添加时间：</td>
+                            <td align="left"><input type="text" class="inp inp1" id="start  /></td>
+                            <td align="left"><input type="text" class="inp inp1" id="end" /></td>
                         </tr>
                         <tr>
-                        	<td align="right">用户名：</td>
+                        	<td align="right">状态：</td>
                             <td align="left">
-                            	<select class="inp">
-                            		<option>请选择</option>	
-                                    <option>请选择</option>
-                                    <option>请选择</option>
+                            	<select class="inp" id="status">
+                            		<option value="2">全部</option>	
+                                    <option value="0">下线</option>
+                                    <option value="1">上线</option>
                             	</select>
                             </td>
                             
@@ -61,7 +60,7 @@
                             <td></td>
                         	<td align="right"></td>
                             
-                            <td align="left"><input type="button" class="btn mr-10" value="搜索" /><input type="button" class="btn" value="导出" /></td>
+                            <td align="left"><input type="button" class="btn mr-10" id="search" value="搜索" /><input type="button" class="btn" value="导出" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -98,9 +97,9 @@
             </div>
             --->
             <div class="page-content-right fr mt-10 mr-10">
-            	<span class="fl mt-5">当前：</span><span class="fl mt-5">2</span><span class="fl mt-5">，总计</span> <span class="fl mt-5">26</span>
+            	<span class="fl mt-5">当前：</span><span class="fl mt-5 currentPage">2</span><span class="fl mt-5">，总计</span> <span class="fl mt-5 totalPage">26</span>
                 <span class="fl page-f page-f-1">首页</span>
-                <span class="fl page-f page-f-3">上一页</span>
+                <span class="fl page-f page-f-3 up-page">上一页</span>
                 <!--
                 <ul class="page-data fl ml-10">
                     <li class="ok">1</li>
@@ -112,8 +111,8 @@
                     <li>13</li>
                 </ul>
                 -->
+                <span class="fl page-f page-f-4 down-page">下一页</span>
                 <span class="fl page-f page-f-2">尾页</span>
-                <span class="fl page-f page-f-4">下一页</span>
             </div>
 		</div>
 	</div>

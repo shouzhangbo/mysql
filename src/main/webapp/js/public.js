@@ -136,3 +136,34 @@ function closeAlert(){
 		}
 	});	
 }
+function leftClick(){
+	$('.left dl dd').hide();
+	$('.left dl').eq(0).children('dd').show();
+	$('.left dl').eq(0).children('dt').addClass('ok');
+	$('.left dl').eq(0).children('dt').children('p').html('<<');
+	$('.left dl').click(function(){
+		if($(this).children('dd').is(":hidden")){
+			$(this).children('dd').show();
+			$(this).children('dt').addClass('ok');
+			$(this).children('dt').children('p').html('<<');
+		}else{
+			$(this).children('dd').hide();
+			$(this).children('dt').removeClass('ok');
+			$(this).children('dt').children('p').html('>>');
+		}
+	});
+}
+$('.up-page').live('click',function(){
+	if(currentPage<=1){
+		return false;
+	}
+	currentPage--;
+	initData();
+});
+$('.down-page').live('click',function(){
+	if(currentPage>=totalPage){
+		return false;
+	}
+	currentPage++;
+	initData();
+});

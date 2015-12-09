@@ -1,91 +1,17 @@
 package com.my.mysql.response;
 
-import java.util.Date;
-import java.util.Set;
+import java.util.List;
+import com.my.mysql.response.bean.CategorySecBeans;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+public class CategorySecResponse extends BaseResponse {
+	private List<CategorySecBeans> list;
 
-public class CategorySecResponse {
-	private Integer cateSecId;
-	private String cateSecName;
-	private String cateSecDesc;
-	private Integer cateSecIndex;
-	private String cateSecImg;
-	private Date createAt;
-	private Date updateAt;
-	private Integer status;
-	private String statusName;
+	public List<CategorySecBeans> getList() {
+		return list;
+	}
+
+	public void setList(List<CategorySecBeans> list) {
+		this.list = list;
+	}
 	
-	private Set<CategoryThrResponse> categoryThr;
-	
-	public Integer getCateSecId() {
-		return cateSecId;
-	}
-	public void setCateSecId(Integer cateSecId) {
-		this.cateSecId = cateSecId;
-	}
-	public String getCateSecName() {
-		return cateSecName;
-	}
-	public void setCateSecName(String cateSecName) {
-		this.cateSecName = cateSecName;
-	}
-	public String getCateSecDesc() {
-		return cateSecDesc;
-	}
-	public void setCateSecDesc(String cateSecDesc) {
-		this.cateSecDesc = cateSecDesc;
-	}
-	public Integer getCateSecIndex() {
-		return cateSecIndex;
-	}
-	public void setCateSecIndex(Integer cateSecIndex) {
-		this.cateSecIndex = cateSecIndex;
-	}
-	public String getCateSecImg() {
-		return cateSecImg;
-	}
-	public void setCateSecImg(String cateSecImg) {
-		this.cateSecImg = cateSecImg;
-	}
-	public Date getCreateAt() {
-		return createAt;
-	}
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-	public Date getUpdateAt() {
-		return updateAt;
-	}
-	public void setUpdateAt(Date updateAt) {
-		this.updateAt = updateAt;
-	}
-	public Set<CategoryThrResponse> getCategoryThr() {
-		return categoryThr;
-	}
-	public void setCategoryThr(Set<CategoryThrResponse> categoryThr) {
-		this.categoryThr = categoryThr;
-	}
-	public Integer getStatus() {
-		return status;
-	}
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-	public String getStatusName() {
-		return statusName;
-	}
-	public void setStatusName(String statusName) {
-		this.statusName = statusName;
-	}
 }

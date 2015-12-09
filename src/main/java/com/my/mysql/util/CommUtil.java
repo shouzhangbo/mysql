@@ -6,12 +6,15 @@ public class CommUtil {
 
 	public static boolean isEmpty(Object obj){
 		if(obj==null){
-			return false;
+			return true;
 		}
 		if("".equals(obj.toString().trim())){
-			return false;
+			return true;
 		}
-		return true;
+		if("null".equals(obj.toString().trim())){
+			return true;
+		}
+		return false;
 	}
 	
 	public static String MD5(String s){
