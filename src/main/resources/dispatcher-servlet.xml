@@ -23,7 +23,6 @@
 		 <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" /> 
 		 <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
      </context:component-scan> 
-      <context:component-scan base-package="com.my.mysql.aop"/>
     
     <!-- 基于注释的事务，当注释中发现@Transactional时，使用id为“transactionManager”的事务管理器  -->
     <!-- 如果没有设置transaction-manager的值，则spring以缺省默认的事务管理器来处理事务，默认事务管理器为第一个加载的事务管理器 -->
@@ -49,7 +48,7 @@
      <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/"
-          p:suffix=".jsp" />
+          p:suffix=".html" />
     <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">    
 	    <property name="supportedMediaTypes">    
 	        <list>    

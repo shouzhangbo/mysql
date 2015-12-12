@@ -133,23 +133,27 @@ public class BGProductCtrl {
 	}
 	@RequestMapping(value = "/queryProduct", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-	public ProductResponse queryCategory(Integer categoryId,Integer cateSecId,Integer cateThrId,
+	public ProductResponse queryCategory(ProductForm form,Integer cateSecId,Integer cateThrId,
 			HttpServletRequest request,HttpServletResponse response){
 		response.setHeader("Access-Control-Allow-Origin", "*" );
 		ProductResponse p = new ProductResponse();
 		List<ProductBeans> list = new ArrayList<ProductBeans>();
-		List<Product> pList = productService.findByProperty(Product.class, "productStatus", GlobalConstant.okInt);
+		List<Product> pList = productService.queryProduct(form);//(Product.class, "productStatus", GlobalConstant.okInt);
+		int count = productService.queryProductByCount(form);
 		for(Product pro : pList){
 			ProductBeans cb = new ProductBeans();
 			BeanCopier copier = BeanCopier.create(Product.class, ProductBeans.class,
                     false);
             copier.copy(pro, cb, null);
             cb.setBrandName(pro.getBrand().getBrandName());
+            cb.setCateThrName(pro.getCategoryThr().getCateThrName());
             list.add(cb);
 		}
 		p.setList(list);
 		p.setRespCode(GlobalConstant.successRespCode);
 		p.setRespMsg("success");
+		p.setTotalReco(count);
+		p.setTotalPage(count%form.getPageSize()==0?count/form.getPageSize():count/form.getPageSize()+1);
 		return p;
 	}
 	/**
@@ -170,8 +174,8 @@ public class BGProductCtrl {
 		return list;
 	}
 	
-	public static Set<CategoryThrBeans> getThrSet(Set<CategoryThr> set){
-		Set<CategoryThrBeans> list = new HashSet<CategoryThrBeans>();
+	public static List<CategoryThrBeans> getThrSet(Set<CategoryThr> set){
+		List<CategoryThrBeans> list = new ArrayList<CategoryThrBeans>();
 		for(CategoryThr obj1:set){
 			CategoryThrBeans obj2 = new CategoryThrBeans();
 			BeanCopier copier = BeanCopier.create(CategoryThr.class, CategoryThrBeans.class,

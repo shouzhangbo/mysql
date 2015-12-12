@@ -2,8 +2,10 @@ package com.my.mysql.ctrl.bg;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -202,6 +204,14 @@ public class BGAddProductCtrl {
 		 
 		 return baseRes;
 	}
+	@RequestMapping(value = "/q", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public Map<String,Object> get(Integer id){
+		Map<String,Object> map = new HashMap<String,Object>();
+		Category c = categoryService.findById(Category.class,id);
+		map.put("dd",c);
+		return map;
+	}
 	/****
 	 * 添加二级类别
 	 * @param productForm
@@ -230,6 +240,8 @@ public class BGAddProductCtrl {
 		 CategorySec sec = new CategorySec();
 		 Category c = categoryService.findById(Category.class,productForm.getCategoryId());
 		 sec.setCategory(c);
+		 System.out.println("name="+productForm.getCategoryName());
+		 System.out.println("desc="+productForm.getCategoryDesc());
 		 sec.setCateSecName(productForm.getCategoryName());
 		 sec.setCateSecDesc(productForm.getCategoryDesc());
 		 sec.setCateSecImg(productForm.getCategoryImg());
@@ -303,8 +315,8 @@ public class BGAddProductCtrl {
 		return list;
 	}
 	
-	public static Set<CategoryThrBeans> getThrSet(Set<CategoryThr> set){
-		Set<CategoryThrBeans> list = new HashSet<CategoryThrBeans>();
+	public static List<CategoryThrBeans> getThrSet(Set<CategoryThr> set){
+		List<CategoryThrBeans> list = new ArrayList<CategoryThrBeans>();
 		for(CategoryThr obj1:set){
 			CategoryThrBeans obj2 = new CategoryThrBeans();
 			BeanCopier copier = BeanCopier.create(CategoryThr.class, CategoryThrBeans.class,

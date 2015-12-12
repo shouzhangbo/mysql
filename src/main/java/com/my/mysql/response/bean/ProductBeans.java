@@ -24,6 +24,7 @@ public class ProductBeans {
 	private String productImgFirst;
 	private String productImg;
 	
+	private String cateThrName;
 	private String brandName;
 	
 
@@ -105,6 +106,14 @@ public class ProductBeans {
 
 	public void setBrandName(String brandName) {
 		this.brandName = brandName;
+	}
+
+	public String getCateThrName() {
+		return cateThrName;
+	}
+
+	public void setCateThrName(String cateThrName) {
+		this.cateThrName = cateThrName;
 	}
 	
 }

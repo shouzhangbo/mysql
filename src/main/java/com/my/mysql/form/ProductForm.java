@@ -1,11 +1,13 @@
 package com.my.mysql.form;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 
 public class ProductForm extends BaseForm{
 	
-	@NotEmpty(message = "id不能为空！", groups = {addCateSecForm.class,addProductForm.class})
+	@NotNull(message = "id不能为空！", groups = {addCateSecForm.class,addProductForm.class})
 	private Integer categoryId;
 	@NotEmpty(message = "名称不能为空！", groups = {addCategoryForm.class,addCateSecForm.class})
 	private String categoryName;
@@ -32,6 +34,8 @@ public class ProductForm extends BaseForm{
 	private String productImg;
 	
 	//搜索词汇
+	private Integer productStatus;
+	
 	private Integer status;
 	private String startTime;
 	private String endTime;
@@ -125,5 +129,11 @@ public class ProductForm extends BaseForm{
 	}
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+	public Integer getProductStatus() {
+		return productStatus;
+	}
+	public void setProductStatus(Integer productStatus) {
+		this.productStatus = productStatus;
 	}
 }

@@ -43,7 +43,7 @@
                         	<td align="right">名称：</td>
                             <td align="left"><input type="text" class="inp inp1" id="name" /></td>
                             <td align="right">添加时间：</td>
-                            <td align="left"><input type="text" class="inp inp1" id="start  /></td>
+                            <td align="left"><input type="text" class="inp inp1" id="start"  /></td>
                             <td align="left"><input type="text" class="inp inp1" id="end" /></td>
                         </tr>
                         <tr>
@@ -51,8 +51,8 @@
                             <td align="left">
                             	<select class="inp" id="status">
                             		<option value="2">全部</option>	
-                                    <option value="0">下线</option>
                                     <option value="1">上线</option>
+                                    <option value="0">下线</option>
                             	</select>
                             </td>
                             
@@ -60,7 +60,11 @@
                             <td></td>
                         	<td align="right"></td>
                             
-                            <td align="left"><input type="button" class="btn mr-10" id="search" value="搜索" /><input type="button" class="btn" value="导出" /></td>
+                            <td align="left">
+                            	<input type="button" class="btn mr-10" id="search" value="搜索" />
+                            	<input type="button" class="btn mr-10" id="clean" value="清空" />
+                            	<input type="button" class="btn" value="导出" />
+                            </td>
                         </tr>
                     </tbody>
                 </table>

@@ -1,6 +1,7 @@
 package com.my.mysql.response.bean;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -26,7 +27,7 @@ public class CategorySecBeans {
 	private Integer status;
 	private String statusName;
 	
-	private Set<CategoryThrBeans> categoryThr;
+	private List<CategoryThrBeans> categoryThr;
 	
 	public Integer getCateSecId() {
 		return cateSecId;
@@ -70,12 +71,6 @@ public class CategorySecBeans {
 	public void setUpdateAt(Date updateAt) {
 		this.updateAt = updateAt;
 	}
-	public Set<CategoryThrBeans> getCategoryThr() {
-		return categoryThr;
-	}
-	public void setCategoryThr(Set<CategoryThrBeans> categoryThr) {
-		this.categoryThr = categoryThr;
-	}
 	public Integer getStatus() {
 		return status;
 	}
@@ -87,5 +82,11 @@ public class CategorySecBeans {
 	}
 	public void setStatusName(String statusName) {
 		this.statusName = statusName;
+	}
+	public List<CategoryThrBeans> getCategoryThr() {
+		return categoryThr;
+	}
+	public void setCategoryThr(List<CategoryThrBeans> categoryThr) {
+		this.categoryThr = categoryThr;
 	}
 }

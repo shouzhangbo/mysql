@@ -322,8 +322,8 @@ public class ProductCtrl {
 		return list;
 	}
 	
-	public static Set<CategoryThrBeans> getThrSet(Set<CategoryThr> set){
-		Set<CategoryThrBeans> list = new HashSet<CategoryThrBeans>();
+	public static List<CategoryThrBeans> getThrSet(Set<CategoryThr> set){
+		List<CategoryThrBeans> list = new ArrayList<CategoryThrBeans>();
 		for(CategoryThr obj1:set){
 			CategoryThrBeans obj2 = new CategoryThrBeans();
 			BeanCopier copier = BeanCopier.create(CategoryThr.class, CategoryThrBeans.class,

@@ -1,26 +1,13 @@
 // JavaScript Document
 var serUrl = "http://localhost:8080/mysql/";
+var categoryName = "",status=2,start='',end='',pageSize=5,currentPage=1,totalPage=0;
 $(function(){
-	
-	$('.left dl dd').hide();
-	$('.left dl').eq(0).children('dd').show();
-	$('.left dl').eq(0).children('dt').addClass('ok');
-	$('.left dl').eq(0).children('dt').children('p').html('<<');
-	$('.left dl').click(function(){
-		if($(this).children('dd').is(":hidden")){
-			$(this).children('dd').show();
-			$(this).children('dt').addClass('ok');
-			$(this).children('dt').children('p').html('<<');
-		}else{
-			$(this).children('dd').hide();
-			$(this).children('dt').removeClass('ok');
-			$(this).children('dt').children('p').html('>>');
-		}
-		
-	})
+	 initFa();
+	initLeft();
+	closeAlert();
+	leftClick();
 	//表格初始化
 	initData();
-	
 	//全选
 	$('.all-select').click(function(){
 		if($(this).is(':checked')){
@@ -31,8 +18,6 @@ $(function(){
 			$(".table-2 input[type='checkbox']").removeAttr('checked');
 		}
 	});
-	
-	
 	//切换页签
 	$('.tab li').click(function(){
 			$('.tab li').removeClass('active');
@@ -101,8 +86,9 @@ $(function(){
 $('.btn-add-new').live("click", function(){
 	$.ajax({
 		type: "POST",
-		url: serUrl+"addCategory.json",
+		url: serUrl+"addCateThr.json",
 		data:{
+			categoryId:$('.up-option').val(),
 			categoryName:$('.file-1').val(),
 			categoryDesc:$('.file-2').val(),
 			categoryIndex:$('.file-3').val(),
@@ -141,6 +127,17 @@ $('.btn-alert-delete').live("click", function(){
 		  alert('网络异常。')
 		}
 	});
+});
+//搜索
+$('#search').live('click',function(){
+	console.log('search='+$('#name').val());
+	categoryName = $('#name').val();
+	status=$('#status').val();
+	start=$('#start').val();
+	end=$('#end').val();
+	initData();
+//	initData(categoryName,status,startTime,endTime,pageSize,currentPage);
+//	pageSize=5,currentPage=1;
 });
 //查看
 $('.check').live('click',function(){
@@ -270,14 +267,41 @@ function remove(){
 	$('.alertbox-1 .btn-ok').removeClass('btn-alert-delete');
 	$('.alertbox-2 .btn-ok').val('确认');
 }
+//加载上级
+function initFa(){
+	$.ajax({
+		type: "POST",
+		url: serUrl+"queryCateSec.json",
+		data:{
+			status:1,
+			pageSize:100,
+			currentPage:1
+		},
+		dataType: "json",
+		success: function(data){
+			console.log(data)
+			var str = '';
+			for(var i=0;i<data.list.length;i++){
+				str = str + '<option value="'+data.list[i].cateSecId+'">'+data.list[i].cateSecName+"</option>";
+			}
+			$('.up-option').append(str);
+		},
+		error:function(){     
+			  //alert('网络异常。')
+		}
+	});
+}
 function initData(){
 	$.ajax({
 		type: "POST",
-		url: serUrl+"queryCategory.json",
+		url: serUrl+"queryCateThr.json",
 		data:{
-			userName:'',
-			productId:1,
-			productCount:1
+			categoryName:categoryName,
+			status:status,
+			startTime:start,
+			endTime:end,
+			pageSize:pageSize,
+			currentPage:currentPage
 		},
 		dataType: "json",
 		success: function(data){
@@ -292,11 +316,11 @@ function initData(){
 					var tdEn = '</td>';
 					var opt = '<td><a href="javascript:;" class="check">查看</a>|<a  href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>';
 					
-					str = str + tdSt + data.list[i].categoryId + tdEn;
-					str = str + tdSt + data.list[i].categoryName + tdEn;
-					str = str + tdSt + data.list[i].categoryDesc + tdEn;
+					str = str + tdSt + data.list[i].cateThrId + tdEn;
+					str = str + tdSt + data.list[i].cateThrName + tdEn;
+					str = str + tdSt + data.list[i].cateThrDesc + tdEn;
 					str = str + tdSt + data.list[i].statusName + tdEn;
-					str = str + tdSt + data.list[i].categoryIndex + tdEn;
+					str = str + tdSt + data.list[i].cateThrIndex + tdEn;
 					str = str + tdSt + data.list[i].createAt + tdEn;
 					str = str + opt + '</tr>';
 					appe = appe + str;

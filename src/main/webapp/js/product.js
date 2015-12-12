@@ -1,6 +1,8 @@
 // JavaScript Document
 var serUrl = "http://localhost:8080/mysql/";
+var productName = "",status=2,start='',end='',pageSize=5,currentPage=1,totalPage=0;
 $(function(){
+	initFa();
 	initLeft();
 	$('.left dl dd').hide();
 	$('.left dl').eq(0).children('dd').show();
@@ -96,6 +98,23 @@ $(function(){
 		$('.page-data li').removeClass('ok');
 		$('.page-data li').eq(i+1).addClass('ok');
 	});
+});
+//上传图片
+$('.upImg-1').live('change',function(){
+	var ss = '<form id="oform" action="'+serUrl+upLoad.json+'" enctype="multipart/form-data">';
+	ss = ss + '<input type="file" value="'+$('.upImg-1').val()+'" />';
+	ss = ss + '</form>'; 
+	$('#body').append(ss);
+	$('#oform').submit();
+	alert('ok');
+});
+//搜索
+$('#search').live('click',function(){
+	productName = $('#name').val();
+	status=$('#status').val();
+	start=$('#start').val();
+	end=$('#end').val();
+	initData();
 });
 //新增-添加
 $('.btn-add-new').live("click", function(){
@@ -284,19 +303,49 @@ function remove(){
 	$('.alertbox-1 .btn-ok').removeClass('btn-alert-delete');
 	$('.alertbox-2 .btn-ok').val('确认');
 }
-function initData(){
+//加载上级
+function initFa(){
 	$.ajax({
 		type: "POST",
-		url: serUrl+"queryCategory.json",
+		url: serUrl+"queryCateThr.json",
 		data:{
-			userName:'',
-			productId:1,
-			productCount:1
+			status:1,
+			pageSize:100,
+			currentPage:1
 		},
 		dataType: "json",
 		success: function(data){
-			/*<tr><td><input type="checkbox" /><td>序号31</td><td>序号32</td><td>序号33</td><td>序号34</td><td>序号35</td><td>序号36</td><td><a href="javascript:;" class="check">查看</a>|<a  href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
-				</tr>*/
+			console.log(data)
+			var str = '';
+			for(var i=0;i<data.list.length;i++){
+				str = str + '<option value="'+data.list[i].cateThrId+'">'+data.list[i].cateThrName+"</option>";
+			}
+			$('.up-option').append(str);
+		},
+		error:function(){     
+			  //alert('网络异常。')
+		}
+	});
+}
+function initData(){
+	$.ajax({
+		type: "POST",
+		url: serUrl+"queryProduct.json",
+		data:{
+			productName:productName,
+			productStatus:status,
+			startTime:start,
+			endTime:end,
+			currentPage:currentPage,
+			pageSize:pageSize
+		},
+		dataType: "json",
+		success: function(data){
+			/*<tr>
+                        	<td><input type="checkbox" /><td>1</td><td>三星手机</td><td>三星曲面平手机</td><td>上线</td>
+                            <td>手机</td><td><img src="../../images/proImg9.jpg" /></td><td>10000</td><td>￥12.00</td><td>2015-01-11 10:00:11</td>
+                            <td><a href="javascript:;" class="check">查看</a>|<a href="javascript:;" class="update">修改</a>|<a href="javascript:;" 								class="delete">删除</a></td>
+                        </tr>*/
 			var appe = '';
 			console.log(data);
 			if('0000'==data.respCode){
@@ -306,11 +355,14 @@ function initData(){
 					var tdEn = '</td>';
 					var opt = '<td><a href="javascript:;" class="check">查看</a>|<a  href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>';
 					
-					str = str + tdSt + data.list[i].categoryId + tdEn;
-					str = str + tdSt + data.list[i].categoryName + tdEn;
-					str = str + tdSt + data.list[i].categoryDesc + tdEn;
-					str = str + tdSt + data.list[i].statusName + tdEn;
-					str = str + tdSt + data.list[i].categoryIndex + tdEn;
+					str = str + tdSt + data.list[i].productId + tdEn;
+					str = str + tdSt + data.list[i].productName + tdEn;
+					str = str + tdSt + data.list[i].productDesc + tdEn;
+					str = str + tdSt + data.list[i].productStatusName + tdEn;
+					str = str + tdSt + data.list[i].cateThrName + tdEn;
+					str = str + tdSt + '<img src="../../images/proImg9.jpg" />' + tdEn;
+					str = str + tdSt + '1000' + tdEn;
+					str = str + tdSt + '$12.00' + tdEn;
 					str = str + tdSt + data.list[i].createAt + tdEn;
 					str = str + opt + '</tr>';
 					appe = appe + str;
