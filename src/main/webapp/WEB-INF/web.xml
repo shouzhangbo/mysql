@@ -85,6 +85,14 @@
         <servlet-name>PictureCheckCode</servlet-name>  
         <url-pattern>/checkCode.json</url-pattern>  
     </servlet-mapping>
+    <servlet>  
+        <servlet-name>UpLoad</servlet-name>  
+        <servlet-class>com.my.mysql.servlet.UpLoad</servlet-class>  
+    </servlet>
+    <servlet-mapping>  
+        <servlet-name>UpLoad</servlet-name>  
+        <url-pattern>/upImg.json</url-pattern>  
+    </servlet-mapping>
     
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
