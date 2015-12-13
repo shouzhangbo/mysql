@@ -23,20 +23,22 @@ public class ProductServiceImpl extends BaseServiceImpl<Product> implements Prod
 		Map<String,Object> params = new HashMap<String,Object>();
 		try{
 			if(!CommUtil.isEmpty(form.getProductName())){
-				hqlStr = " and productName like :productName";
+				hqlStr = hqlStr + " and productName like :productName";
 				params.put("productName", "%"+form.getProductName()+"%");
 			}
 			if(!CommUtil.isEmpty(form.getProductStatus())){
-				hqlStr = " and productStatus=:productStatus";
-				params.put("productStatus",form.getProductStatus());
+				if(form.getProductStatus()!=2){
+					hqlStr = hqlStr + " and productStatus=:productStatus";
+					params.put("productStatus",form.getProductStatus());
+				}
 			}
 			if(!CommUtil.isEmpty(form.getStartTime())){
-				hqlStr = hqlStr + "createAt >=:createAt";
-				params.put(" and createAt", sdf.parse(form.getStartTime()));
+				hqlStr = hqlStr + " and createAt >=:createAt";
+				params.put("createAt", sdf.parse(form.getStartTime()));
 			}
 			if(!CommUtil.isEmpty(form.getEndTime())){
-				hqlStr = hqlStr + "createAt <=:createAt";
-				params.put(" and createAt", sdf.parse(form.getEndTime()));
+				hqlStr = hqlStr + " and createAt <=:createAt";
+				params.put("createAt", sdf.parse(form.getEndTime()));
 			}
 			PageInfo pageInfo = new PageInfo();
 			if(CommUtil.isEmpty(form.getPageSize())||0==form.getPageSize()){
@@ -66,15 +68,17 @@ public class ProductServiceImpl extends BaseServiceImpl<Product> implements Prod
 				params.put("productName", "%"+form.getProductName()+"%");
 			}
 			if(!CommUtil.isEmpty(form.getProductStatus())){
-				hqlStr = " and productStatus=:productStatus";
-				params.put("productStatus",form.getProductStatus());
+				if(form.getProductStatus()!=2){
+					hqlStr = hqlStr + " and productStatus=:productStatus";
+					params.put("productStatus",form.getProductStatus());
+				}
 			}
 			if(!CommUtil.isEmpty(form.getStartTime())){
-				hqlStr = hqlStr + "createAt >=:createAt";
+				hqlStr = hqlStr + " and createAt >=:createAt";
 				params.put("createAt", sdf.parse(form.getStartTime()));
 			}
 			if(!CommUtil.isEmpty(form.getEndTime())){
-				hqlStr = hqlStr + "createAt <=:createAt";
+				hqlStr = hqlStr + " and createAt <=:createAt";
 				params.put("createAt", sdf.parse(form.getEndTime()));
 			}
 			list = baseDao.find(hqlStr, params);

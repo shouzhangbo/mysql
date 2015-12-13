@@ -187,7 +187,7 @@
                      		<!-- 在上传图片的地方添加一个form表单 -->
 	                     	<form action="http://localhost:8080/mysql/upImg.json" id="form1" method="post" 
 	                     	encType="multipart/form-data" target="frame-hide">
-	                    		<input type="file" class="upImg upImg-1" />
+	                    		<input type="file" name="file" class="upImg upImg-1" />
 	                     		<iframe name="frame-hide" class="hide"></iframe>
 	                     	</form>
                     	</td>
@@ -210,12 +210,12 @@
     </div>
     <!--弹出框2 结束-->
     <script>
-    	$(function(){
+    	/*$(function(){
 			var ss = $('<tr><td align="right">上传图片：</td><td align="left"><div class="img-content"></div></td></tr><tr><td align="right"><input type="file" class="upImg upImg-1" /></td></tr>');
 			$('.upImg-1').live('change',function(){
 				ss.insertAfter($(this).parent().parent());
 			});
-		});
+		});*/
     </script>
 </body>
 </html>
