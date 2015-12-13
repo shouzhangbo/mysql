@@ -16,7 +16,8 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class UpLoad {
-	
+//	http://www.dedecms.com/knowledge/data-base/mysql/2012/0819/7582.html
+	private String src = "http://localhost:8080/mysql/img/";
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
 		this.doGet(request, response);
@@ -38,7 +39,7 @@ public class UpLoad {
 			      tempFile = new File(item.getName());
 			      //上传文件的保存路径
 //			      File file = new File("E:/workspace/MyTest/src/main/webapp/img/", tempFile.getName());
-			      File file = new File("E:", tempFile.getName());
+			      File file = new File(src, tempFile.getName());
 			      item.write(file);
 			      break;
 			    }
@@ -52,7 +53,7 @@ public class UpLoad {
 	        out.println("</head>");
 	        out.println("<body>");
 	        out.println("<script type='text/javascript'>");
-	        out.println("parent.test('test output');");
+	        out.println("parent.imgCallBack('"+src+tempFile.getName()+"');");
 	        out.println("</script>");
 	        out.println("</body>");
 	        out.println("</html>");
