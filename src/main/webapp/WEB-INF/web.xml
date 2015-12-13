@@ -77,6 +77,7 @@
 	</resource-ref>
 	-->
 	<!-- 自己的servlet -->
+	<!-- 图片验证码 -->
 	<servlet>  
         <servlet-name>PictureCheckCode</servlet-name>  
         <servlet-class>com.my.mysql.servlet.PictureCheckCode</servlet-class>  
@@ -85,6 +86,7 @@
         <servlet-name>PictureCheckCode</servlet-name>  
         <url-pattern>/checkCode.json</url-pattern>  
     </servlet-mapping>
+    <!-- 上传图片 -->
     <servlet>  
         <servlet-name>UpLoad</servlet-name>  
         <servlet-class>com.my.mysql.servlet.UpLoad</servlet-class>  

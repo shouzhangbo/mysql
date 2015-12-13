@@ -176,10 +176,21 @@
                     </tr>
                     <tr>
                     	<td align="right">上传图片：</td>
-                        <td align="left"><div class="img-content file-5"></div></td>
+                        <td align="left">
+	                        <div class="img-content file-5">
+	                        	<img src="" id="img1" class="" />
+	                        </div>
+                        </td>
                     </tr>
                      <tr>
-                    	<td align="right"><input type="file" class="upImg upImg-1" /></td>
+                     	<td align="right">
+                     		<!-- 在上传图片的地方添加一个form表单 -->
+	                     	<form action="http://localhost:8080/mysql/upImg.json" id="form1" method="post" 
+	                     	encType="multipart/form-data" target="frame-hide">
+	                    		<input type="file" class="upImg upImg-1" />
+	                     		<iframe name="frame-hide" class="hide"></iframe>
+	                     	</form>
+                    	</td>
                     </tr>
                     <tr>
                     	<td align="right">库存：</td>

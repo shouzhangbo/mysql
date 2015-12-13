@@ -99,14 +99,14 @@ $(function(){
 		$('.page-data li').eq(i+1).addClass('ok');
 	});
 });
+//上传图片提供给iframe调用的方法
+function imgCallBack(img){
+	//预览图片
+	$('#img1').attr('src',img);
+}
 //上传图片
 $('.upImg-1').live('change',function(){
-	var ss = '<form id="oform" action="'+serUrl+upLoad.json+'" enctype="multipart/form-data">';
-	ss = ss + '<input type="file" value="'+$('.upImg-1').val()+'" />';
-	ss = ss + '</form>'; 
-	$('#body').append(ss);
-	$('#oform').submit();
-	alert('ok');
+	$('#form1').submit();
 });
 //搜索
 $('#search').live('click',function(){
@@ -125,7 +125,7 @@ $('.btn-add-new').live("click", function(){
 			categoryName:$('.file-1').val(),
 			categoryDesc:$('.file-2').val(),
 			categoryIndex:$('.file-3').val(),
-			categoryImg:"xx.png"
+			categoryImg:$('#img1').attr('src')
 		},
 		dataType: "json",
 		success: function(data){
