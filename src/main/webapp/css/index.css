@@ -9,6 +9,8 @@ a{text-decoration:none;}
 .head-ul{margin-right:20px;}
 .head-ul li{list-style:none;float:left;margin-left:10px;}
 
+.price{font-size:20px;font-weight:bold;}
+.price-red{color:red;}
 
 .main{margin:0px auto;width:100%;background:#EAEAF3;}
 .main-sort{margin:0px auto;width:calc(100% - 300px);height:100px;background:none;position:relative;}

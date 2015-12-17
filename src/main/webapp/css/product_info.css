@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+.h2-title{margin:0px auto;width:calc(100% - 300px);height:30px;font-size:16px;padding-top:10px;}
+/***中间详情使用淘宝双飞翼布局来做***/
+.product_info{margin:0px auto;width:calc(100% - 300px);height:500px;overflow:hidden;}
+.product_info .product_info_inter{width:100%;height:500px;float:left;}
+.product_img{padding:10px;width:300px;height:500px;float:left;margin-left:-100%;}
+.pro-img{width:280;height:280px;}
+.pro-name a{font-size:16px;}
+.price-info{width:100%;height:50px;padding:10px 10px;}
+
+.inp-count{width:30px;height:25px;line-height:25px;text-align:center;}
+.up-add{width:18px;height:14px;background:url(../images/btn-top_03.jpg) no-repeat;}
+.down-cal{width:18px;height:14px;background:url(../images/btn-bo_03.jpg) no-repeat;}
+
+.pro-img-li{list-style:none;}
+.pro-img-li li{float:left;width:50px;height:50px;padding:5px;}
+.pro-img-li li img{width:50px;height:50px;}
+.product_info_inter_main{margin:0px 250px 0px 320px;}
+.product_info_shop{width:250px;height:500px;float:left;margin-left:-250px;}
