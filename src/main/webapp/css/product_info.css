@@ -1,4 +1,6 @@
 @charset "utf-8";
+.ml-5{margin-left:5px;}
+.mt-10{margin-top:10px;}
 /* CSS Document */
 .h2-title{margin:0px auto;width:calc(100% - 300px);height:30px;font-size:16px;padding-top:10px;}
 /***中间详情使用淘宝双飞翼布局来做***/
@@ -9,12 +11,23 @@
 .pro-name a{font-size:16px;}
 .price-info{width:100%;height:50px;padding:10px 10px;}
 
-.inp-count{width:30px;height:25px;line-height:25px;text-align:center;}
-.up-add{width:18px;height:14px;background:url(../images/btn-top_03.jpg) no-repeat;}
-.down-cal{width:18px;height:14px;background:url(../images/btn-bo_03.jpg) no-repeat;}
+.pro-add-shop{width:100%;height:40px;padding:20px 10px;}
+.count-txt{line-height:30px;font-size:20px;}
+.inp-count{width:30px;height:29px;line-height:29px;text-align:center;}
+.up-add,.down-cal{cursor:pointer;width:18px;height:14px;}
+.up-add{background:url(../images/btn-top_03.jpg) no-repeat;}
+.down-cal{background:url(../images/btn-bo_03.jpg) no-repeat;margin-top:5px;}
 
 .pro-img-li{list-style:none;}
 .pro-img-li li{float:left;width:50px;height:50px;padding:5px;}
 .pro-img-li li img{width:50px;height:50px;}
 .product_info_inter_main{margin:0px 250px 0px 320px;}
 .product_info_shop{width:250px;height:500px;float:left;margin-left:-250px;}
+
+
+/********购物车***********/
+
+.shop-car-table thead{background:red;}
+.shop-car-table th{height:35px;}
+.shop-car-table td{text-align:center;}
+.shop-tab-img{width:50px;height:50px;margin:10px;border:1px solid rgb(157, 152, 152);padding:5px;}

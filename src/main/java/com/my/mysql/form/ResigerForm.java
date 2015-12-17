@@ -15,6 +15,12 @@ public class ResigerForm extends BaseForm{
 	@NotEmpty(message = "邮件地址不能为空！", groups = {perfectRegister.class})
 	private String userEmail;
 	
+	
+	private String addressStreet;
+	private String addressInfo;
+	private String receivePhone;
+	private String receiveMan;
+	
 	public String getUserName() {
 		return userName;
 	}

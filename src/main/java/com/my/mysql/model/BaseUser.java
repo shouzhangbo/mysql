@@ -36,6 +36,15 @@ public class BaseUser {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "baseInfo")
 	private Set<UserInfo> userInfo;
 	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "addresUser")
+	private Set<Address> address;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "baseEval")
+	private Set<Evaluation> evaluation;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "baseUser")
+	private Set<Order> orderInfo;
+	
 	public Integer getBaseUserId() {
 		return baseUserId;
 	}
@@ -83,5 +92,23 @@ public class BaseUser {
 	}
 	public void setStatusName(String statusName) {
 		this.statusName = statusName;
+	}
+	public Set<Address> getAddress() {
+		return address;
+	}
+	public void setAddress(Set<Address> address) {
+		this.address = address;
+	}
+	public Set<Evaluation> getEvaluation() {
+		return evaluation;
+	}
+	public void setEvaluation(Set<Evaluation> evaluation) {
+		this.evaluation = evaluation;
+	}
+	public Set<Order> getOrderInfo() {
+		return orderInfo;
+	}
+	public void setOrderInfo(Set<Order> orderInfo) {
+		this.orderInfo = orderInfo;
 	}
 }

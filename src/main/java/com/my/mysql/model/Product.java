@@ -1,15 +1,18 @@
 package com.my.mysql.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity   
@@ -36,7 +39,18 @@ public class Product {
 	private String productImgFirst;
 	@Column(name = "product_img",length=512)
 	private String productImg;
-	
+	//价格
+	@Column(name = "price")
+	private Integer price;
+	//库存
+	@Column(name = "stock")
+	private Integer stock;
+	//销量
+	@Column(name = "sale_num")
+	private Integer saleNum;
+	//现在剩余
+	@Column(name = "now_num")
+	private Integer nowNum;
 	
 	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE }, optional = true)
 	@JoinColumn(name = "brand_id")
@@ -45,6 +59,9 @@ public class Product {
 	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE }, optional = true)
 	@JoinColumn(name = "cate_thr_id")
 	private CategoryThr categoryThr;
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
+	private Set<OrderInfo> orderInfo;
 
 	public Integer getProductId() {
 		return productId;
@@ -132,6 +149,46 @@ public class Product {
 
 	public void setProductImg(String productImg) {
 		this.productImg = productImg;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
+	public Integer getStock() {
+		return stock;
+	}
+
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
+
+	public Integer getSaleNum() {
+		return saleNum;
+	}
+
+	public void setSaleNum(Integer saleNum) {
+		this.saleNum = saleNum;
+	}
+
+	public Integer getNowNum() {
+		return nowNum;
+	}
+
+	public void setNowNum(Integer nowNum) {
+		this.nowNum = nowNum;
+	}
+
+	public Set<OrderInfo> getOrderInfo() {
+		return orderInfo;
+	}
+
+	public void setOrderInfo(Set<OrderInfo> orderInfo) {
+		this.orderInfo = orderInfo;
 	}
 	
 }

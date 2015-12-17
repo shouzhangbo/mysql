@@ -3,6 +3,7 @@ package com.my.mysql.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -27,6 +28,7 @@ public class UpLoad extends  HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 		System.out.println("coming in the upLoad!!!");
+		String fileName = getFileName();
 		request.setCharacterEncoding("UTF-8");
 		String url = "http://localhost:89/";
 		String src = "/srv/image/";
@@ -49,9 +51,9 @@ public class UpLoad extends  HttpServlet{
 		      System.out.println("上传文件的名称:" + item.getName());
 
 		      tempFile = new File(item.getName());
-
+		      fileName = fileName +tempFile.getName().substring(tempFile.getName().lastIndexOf("."), tempFile.getName().length());
 		      //上传文件的保存路径
-		      File file = new File(src, tempFile.getName());
+		      File file = new File(src, fileName);
 		      item.write(file);
 		      request.setAttribute("upload.message", "上传文件成功！");
 		     }else{
@@ -69,9 +71,13 @@ public class UpLoad extends  HttpServlet{
 	        out.println("<body>");
 	        out.println("<script type='text/javascript'>");
 	        System.out.println("src======"+url+tempFile.getName());
-	        out.println("parent.imgCallBack('"+url+tempFile.getName()+"');");
+	        out.println("parent.imgCallBack('"+url+fileName+"');");
 	        out.println("</script>");
 	        out.println("</body>");
 	        out.println("</html>");
         }
+	
+	public String getFileName(){
+		return new SimpleDateFormat("yyyymmddhhmmss").format(new Date());
+	}
 }
