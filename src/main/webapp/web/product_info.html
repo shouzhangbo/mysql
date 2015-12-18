@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>商品详情</title>
 <link rel="stylesheet" type="text/css" href="../css/index.css"/>
+<link rel="stylesheet" type="text/css" href="../css/public.css"/>
 <link rel="stylesheet" type="text/css" href="../css/product_info.css"/>
 </head>
 <body>
@@ -119,12 +120,14 @@
                 </div>
             </div>
         	<div class="product_img">
-            	<img class="pro-img" src="../images/proImg2.jpg" />
+            	<div class="jqzoom">
+            		<img class="pro-img" src="../images/proImg2.jpg" />
+                </div>
                 <ul class="pro-img-li">
                 	<li><img src="../images/proImg2.jpg" /></li>
-                    <li><img src="../images/proImg2.jpg" /></li>
-                    <li><img src="../images/proImg2.jpg" /></li>
-                    <li><img src="../images/proImg2.jpg" /></li>
+                    <li><img src="../images/proImg7.jpg" /></li>
+                    <li><img src="../images/proImg6.jpg" /></li>
+                    <li><img src="../images/proImg5.jpg" /></li>
                 </ul>
             </div>
             
@@ -134,5 +137,33 @@
         </div>
     </div>
     <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.jqzoom.js"></script>
+    <script>
+    	$(function(){
+			var inptCount = $('.inp-count').val();
+			//购物数量增减
+			$('.up-add').click(function(){
+				$('.inp-count').val(inptCount++);
+			});
+			$('.down-cal').click(function(){
+				if(inptCount>0){
+					$('.inp-count').val(1);
+				}else{
+					$('.inp-count').val(inptCount--);
+				}
+			});
+			//切换图片
+			$('.pro-img-li li').hover(function(){
+				$('.pro-img').attr('src',$(this).find('img').attr('src'));	
+			},function(){});
+			$(".jqzoom").jqueryzoom({
+				xzoom: 300, //放大图的宽度(默认是 200)
+				yzoom: 300, //放大图的高度(默认是 200)
+				offset: 10, //离原图的距离(默认是 10)
+				position: "left", //放大图的定位(默认是 "right")
+				preload:1
+			});
+		});
+    </script>
 </body>
 </html>
