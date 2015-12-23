@@ -127,11 +127,24 @@ public class RedisClient {
         jedisPool.returnResource(jedis);
         shardedJedisPool.returnResource(shardedJedis);
     }
+    public void fl(){
+    	jedis.flushDB();
+    }
     public void test(){
     	System.out.println(shardedJedis.get("stringlists"));
     }
     public static void main(String[] args) {
-		new RedisClient().show();
+		new RedisClient().fl();
 //		new RedisClient().test();
+    	
 	}
+    
+    class Test{
+    	public Test(String name,String id){
+    		this.name = name;
+    		this.id= id ;
+    	}
+    	String name;
+    	String id;
+    }
 }

@@ -2,7 +2,7 @@
 var serUrl = "http://localhost:8080/mysql/";
 var productName = "",status=2,start='',end='',pageSize=5,currentPage=1,totalPage=0;
 $(function(){
-	//initFa();
+	initFa();
 	initLeft();
 	$('.left dl dd').hide();
 	$('.left dl').eq(0).children('dd').show();
@@ -120,16 +120,20 @@ $('#search').live('click',function(){
 $('.btn-add-new').live("click", function(){
 	$.ajax({
 		type: "POST",
-		url: serUrl+"addCategory.json",
+		url: serUrl+"category/addProduct.json",
 		data:{
-			categoryName:$('.file-1').val(),
-			categoryDesc:$('.file-2').val(),
+			categoryId:1,
+			brandId:1,
+			productName:$('.file-1').val(),
+			productDesc:$('.file-2').val(),
 			categoryIndex:$('.file-3').val(),
-			categoryImg:$('#img1').attr('src')
+			price:10,
+			stock:10,
+			productImgFirst:$('#img1').attr('src')
 		},
 		dataType: "json",
 		success: function(data){
-			alert('ok');
+			console.log(data);
 			$('.alertbox').hide();
 			remove();
 			initData();
@@ -315,7 +319,7 @@ function initFa(){
 		},
 		dataType: "json",
 		success: function(data){
-			console.log(data)
+			console.log("加载上级的="+data)
 			var str = '';
 			for(var i=0;i<data.list.length;i++){
 				str = str + '<option value="'+data.list[i].cateThrId+'">'+data.list[i].cateThrName+"</option>";

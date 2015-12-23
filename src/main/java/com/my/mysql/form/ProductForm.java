@@ -23,7 +23,7 @@ public class ProductForm extends BaseForm{
 	@NotEmpty(message = "品牌描述不能为空！", groups = {addBrandForm.class})
 	private String brandDesc;
 	
-	@NotEmpty(message = "id不能为空！", groups = {addProductForm.class})
+	@NotNull(message = "id不能为空！", groups = {addProductForm.class})
 	private Integer brandId;
 	@NotEmpty(message = "商品名称不能为空！", groups = {addProductForm.class})
 	private String productName;
@@ -32,6 +32,12 @@ public class ProductForm extends BaseForm{
 	@NotEmpty(message = "商品默认图片不能为空！", groups = {addProductForm.class})
 	private String productImgFirst;
 	private String productImg;
+	//
+	@NotNull(message = "价格不能为空！", groups = {addProductForm.class})
+	private Integer price;
+	//库存
+	@NotNull(message = "库存不能为空！", groups = {addProductForm.class})
+	private Integer stock;
 	
 	//搜索词汇
 	private Integer productStatus;
@@ -135,5 +141,17 @@ public class ProductForm extends BaseForm{
 	}
 	public void setProductStatus(Integer productStatus) {
 		this.productStatus = productStatus;
+	}
+	public Integer getPrice() {
+		return price;
+	}
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+	public Integer getStock() {
+		return stock;
+	}
+	public void setStock(Integer stock) {
+		this.stock = stock;
 	}
 }

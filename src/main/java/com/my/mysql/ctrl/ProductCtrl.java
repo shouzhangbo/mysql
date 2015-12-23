@@ -2,8 +2,10 @@ package com.my.mysql.ctrl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -146,7 +148,7 @@ public class ProductCtrl {
 	 */
 	@RequestMapping(value = "addProduct", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-    public BaseResponse addProduct(@Validated({addBrandForm.class}) ProductForm productForm, 
+    public BaseResponse addProduct(@Validated({addProductForm.class}) ProductForm productForm, 
 			BindingResult result,HttpServletRequest request,HttpServletResponse response){
 		BaseResponse baseRes = new BaseResponse();
 		 try {
@@ -303,6 +305,39 @@ public class ProductCtrl {
 		p.setRespCode(GlobalConstant.successRespCode);
 		p.setRespMsg("success");
 		return p;
+	}
+	/**
+	 * 查询单个商品
+	 * @param categoryId
+	 * @param cateSecId
+	 * @param cateThrId
+	 * @return
+	 */
+	@RequestMapping(value = "queryProductById", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+	public Map<String,Object> queryProById(Integer productId){
+		Map<String,Object> map = new HashMap<String,Object>();
+		Product pro = productService.findById(Product.class, productId);
+		if(!CommUtil.isEmpty(pro)){
+			map.put("respCode",GlobalConstant.successRespCode);
+			Map<String,Object> bean = new HashMap<String,Object>();
+			bean.put("productId", pro.getProductId());
+			bean.put("productName", pro.getProductName());
+			bean.put("productDesc", pro.getProductDesc());
+			bean.put("productStatus", pro.getProductStatus());
+			bean.put("productStatusName", pro.getProductStatusName());
+			bean.put("productImgFirst", pro.getProductImgFirst());
+			bean.put("productImg", pro.getProductImg());
+			
+			bean.put("price", pro.getPrice());
+			bean.put("stock", pro.getStock());
+			bean.put("saleNum", pro.getSaleNum());
+			bean.put("nowNum", pro.getNowNum());    
+//			bean.put("brand", pro.getBrand().getBrandName());
+//			bean.put("categoryThr", pro.getCategoryThr().getCateThrName());
+			map.put("product", bean);
+		}
+		return map;
 	}
 	/**
 	 * 

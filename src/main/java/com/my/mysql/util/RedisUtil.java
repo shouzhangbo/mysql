@@ -71,7 +71,7 @@ public class RedisUtil {
     //String
     //List
     public void addList(String key,String value){
-    	shardedJedis.lpush(key, value); 
+    	shardedJedis.lpush(key, value);
     }
     public List<String> queryListAll(String key){
     	if(!shardedJedis.exists(key)){
@@ -88,4 +88,20 @@ public class RedisUtil {
     
     //Set
     //Map
+    public void show(String key,int index,String value){
+        shardedJedis.lset(key, index, value);
+    }
+    public static void main(String[] args) {
+    	RedisUtil redist = new RedisUtil();
+//    	redist.addList("userId", "test1");
+//    	redist.show("10000",2,"111111111");
+    	List<String> list = redist.queryListAll("10000");
+    	for(int i=0;i<list.size();i++){
+//    		if(i==0){
+    			redist.update("10000",i,"test The Update");
+//    		}
+    		System.out.println("第"+i+"个:"+list.get(i));
+    	}
+    	System.out.println("******");
+	}
 }

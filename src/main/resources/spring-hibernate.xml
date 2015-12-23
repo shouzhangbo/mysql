@@ -53,7 +53,7 @@
     <!-- JDBC数据库连接 -->
 	 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/bob" />
+		<property name="url" value="jdbc:mysql://localhost:3306/shop" />
 		<property name="username" value="root" />
 		<property name="password" value="houzhangbo" />
 	</bean> 

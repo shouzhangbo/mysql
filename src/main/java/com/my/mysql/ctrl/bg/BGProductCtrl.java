@@ -145,8 +145,8 @@ public class BGProductCtrl {
 			BeanCopier copier = BeanCopier.create(Product.class, ProductBeans.class,
                     false);
             copier.copy(pro, cb, null);
-            cb.setBrandName(pro.getBrand().getBrandName());
-            cb.setCateThrName(pro.getCategoryThr().getCateThrName());
+//            cb.setBrandName(pro.getBrand().getBrandName());
+//            cb.setCateThrName(pro.getCategoryThr().getCateThrName());
             list.add(cb);
 		}
 		p.setList(list);
