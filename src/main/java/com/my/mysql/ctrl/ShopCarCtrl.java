@@ -32,6 +32,15 @@ public class ShopCarCtrl {
 	public BaseResponse add(String userId,Integer productId,Integer num){
 		BaseResponse b = new BaseResponse();
 		RedisUtil redis = new RedisUtil();
+		//先判断商品是否存在
+		Product pro = productService.findById(Product.class, productId);
+		if(CommUtil.isEmpty(pro)){
+			b.setRespMsg("该商品不存在");
+			return b;
+		}else if(pro.getNowNum()<num){
+			b.setRespMsg("商品剩余数量不足");
+			return b;
+		}
 		List<String> list = redis.queryListAll(userId);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("productId", productId);

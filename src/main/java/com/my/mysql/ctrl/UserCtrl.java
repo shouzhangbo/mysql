@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.my.mysql.constants.GlobalConstant;
 import com.my.mysql.form.BaseForm.isResigerForm;
 import com.my.mysql.form.BaseForm.resigerForm;
+import com.my.mysql.form.BaseForm.loginForm;
 import com.my.mysql.form.BaseForm.perfectRegister;
 import com.my.mysql.form.ResigerForm;
 import com.my.mysql.model.BaseUser;
@@ -102,6 +104,42 @@ public class UserCtrl {
 		user.setUpdateAt(new Date());
 		baseUserService.save(user);
 		
+		baseRes.setRespCode("0000");
+		baseRes.setRespMsg("success");
+		return baseRes;
+	}
+	/**
+	 * 注册
+	 * @param userForm
+	 * @param result
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+	public BaseResponse login(@Validated({loginForm.class}) ResigerForm userForm, 
+			BindingResult result,HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*" );
+		HttpSession session = request.getSession();
+		BaseResponse baseRes = new BaseResponse();
+		 try {
+	            if (result.hasErrors()) {
+	                for (ObjectError e : result.getAllErrors()) {
+	                	baseRes.setRespMsg(e.getDefaultMessage());
+	                    return baseRes;
+	                }
+	            }
+		 }catch(Exception e){
+			 baseRes.setRespMsg("网络异常");
+			 e.printStackTrace();
+		 }
+		BaseUser user = baseUserService.queryUser(userForm);
+		if(!CommUtil.isEmpty(user)){
+			//放在session里面
+			user.setUpdateAt(new Date());
+			session.setAttribute(userForm.getUserName(), user);
+		}
 		baseRes.setRespCode("0000");
 		baseRes.setRespMsg("success");
 		return baseRes;

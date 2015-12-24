@@ -4,9 +4,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class ResigerForm extends BaseForm{
 
-	@NotEmpty(message = "用户名不能为空！", groups = {resigerForm.class,isResigerForm.class})
+	@NotEmpty(message = "用户名不能为空！", groups = {resigerForm.class,isResigerForm.class,loginForm.class})
 	private String userName;
-	@NotEmpty(message = "密码不能为空！", groups = {resigerForm.class})
+	@NotEmpty(message = "密码不能为空！", groups = {resigerForm.class,loginForm.class})
 	private String baseUserPsd;
 	@NotEmpty(message = "用户id不能为空！", groups = {perfectRegister.class})
 	private Integer userId;

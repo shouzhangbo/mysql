@@ -18,6 +18,7 @@ public class BaseForm {
 		this.currentPage = currentPage;
 	}
 	public interface resigerForm{}
+	public interface loginForm{}
 	public interface isResigerForm{}
 	public interface perfectRegister{}
 	public interface addCategoryForm{}
