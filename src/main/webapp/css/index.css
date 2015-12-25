@@ -70,16 +70,16 @@ a{text-decoration:none;}
 .banner-right{background:url(../images/slider-arrow2.png) no-repeat 5px 10px;width:20px;height:45px;position:absolute;top:88px;left:580px;}
 
 .banner-mount{position:absolute;top:200px;left:300px;}
-.banner-mount li{list-style:none;float:left;margin-left:10px;width:20px;height:20px;background:red;color:white;text-align:center;line-height:20px;}
+.banner-mount li{list-style:none;float:left;margin-left:10px;width:20px;height:20px;background:red;color:white;text-align:center;line-height:20px;cursor: pointer;}
 .banner-mount .active{background:white;color:black;}
 
-.lunbo-index{position:relative;width:600px;overflow:hidden;height:100px;}
-.lunbo-img{margin-left:10px;margin-top:5px;position:absolute;top:0px;left:0px;z-index:99;}
+.lunbo-index{position:relative;width:585px;overflow:hidden;height:85px;margin-left:15px;margin-top:15px;}
+.lunbo-img{position:absolute;top:0px;left:0px;z-index:99;}
 .lunbo-img li{list-style:none;float:left;}
 .lunbo-img img{width:190px;height:110px;}
 .lunbo-left,.lunbo-right{position:absolute;top:25px;width:20px;z-index:999;height:50px;display:none;}
-.lunbo-left{background: url(../images/slider-arrow2.png) no-repeat -27px 10px;left:10px;}
-.lunbo-right{background: url(../images/slider-arrow2.png) no-repeat 5px 10px;right:20px;}
+.lunbo-left{background: url(../images/slider-arrow2.png) no-repeat -27px 10px;left:-4px;}
+.lunbo-right{background: url(../images/slider-arrow2.png) no-repeat 5px 10px;right:23px;}
 
 .main-ad-content-right{width:235px;height:348px;margin-left:5px;border:1px solid red;background:red;}
 .ad-recomm{height:100px;border:1px solid blue;overflow:hidden;}
@@ -113,7 +113,7 @@ a{text-decoration:none;}
 .main-flow{margin:0px auto;width:calc(100% - 300px);height:200px;background:red;}
 
 .main-rang{margin:0px auto;width:calc(100% - 300px);height:210px;}
-.main-rang-title{width: 100%;height: 30px;}
+.main-rang-title{width:92%;height: 30px;}
 .main-rang-con{width:100%;height:150px;}
 .main-rang-con li{list-style:none;float:left;width:185px;height:150px;border:1px solid red;border-right:none;padding:10px;position:relative;}
 .main-rang-con li:last-child{border-right:1px solid red;}
