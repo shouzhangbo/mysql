@@ -73,8 +73,8 @@ a{text-decoration:none;}
 .banner-mount li{list-style:none;float:left;margin-left:10px;width:20px;height:20px;background:red;color:white;text-align:center;line-height:20px;cursor: pointer;}
 .banner-mount .active{background:white;color:black;}
 
-.lunbo-index{position:relative;width:585px;overflow:hidden;height:85px;margin-left:15px;margin-top:15px;}
-.lunbo-img{position:absolute;top:0px;left:0px;z-index:99;}
+.lunbo-index{position:relative;width:570px;overflow:hidden;height:85px;margin:15px 15px 0px 15px;}
+.lunbo-img{position:absolute;top:0px;left:0px;z-index:99;width:1330px;}
 .lunbo-img li{list-style:none;float:left;}
 .lunbo-img img{width:190px;height:110px;}
 .lunbo-left,.lunbo-right{position:absolute;top:25px;width:20px;z-index:999;height:50px;display:none;}
@@ -84,7 +84,7 @@ a{text-decoration:none;}
 .main-ad-content-right{width:235px;height:348px;margin-left:5px;border:1px solid red;background:red;}
 .ad-recomm{height:100px;border:1px solid blue;overflow:hidden;}
 .ad-img{position:relative;height:125px;width:235px;overflow:hidden;}
-.ad-img-li{position:absolute;top:0px;left:0px;}
+.ad-img-li{position:absolute;top:0px;left:0px;width:1350px;}
 .ad-img ul li{list-style:none;float:left;height:125px;width:235px;}
 .ad-img img{height:125px;width:100%;}
 .ad-img .ad-img-left,.ad-img-right{top:45px;}

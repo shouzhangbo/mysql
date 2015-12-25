@@ -302,22 +302,22 @@ function leftSin(){
 var rightLen = $('.ad-img-li li').length;
 var j=1;
 function right(){
-	if(j>leftLen-2){
+	if(j>rightLen-2){
 		j=0;
 		$('.ad-img-li').css('left','0px').animate({'left':-235*j+'px'});
 	}else{
+		$('.ad-img-li').animate({'left':-235*j+'px'});
 		j++;
-		$('.ad-img-li').animate({'left':-235*j+'px'});
 	}
 }
-function rightSin(){
+/*function rightSin(){
 	if(j>leftLen-2){
 		j=0;
 		$('.ad-img-li').css('left','0px').animate({'left':-235*j+'px'});
 	}else{
 		$('.ad-img-li').animate({'left':-235*j+'px'});
 	}
-}
+}*/
 
 function isLogin(){
 	var user = window.localStorage.getItem("username");
