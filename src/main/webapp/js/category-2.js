@@ -336,6 +336,7 @@ function initData(){
 					str = str + tdSt + data.list[i].statusName + tdEn;
 					str = str + tdSt + data.list[i].cateSecIndex + tdEn;
 					str = str + tdSt + data.list[i].createAt + tdEn;
+					str = str + tdSt + data.list[i].categoryName + tdEn;
 					str = str + opt + '</tr>';
 					appe = appe + str;
 				}

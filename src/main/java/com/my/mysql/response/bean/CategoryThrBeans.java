@@ -12,7 +12,7 @@ public class CategoryThrBeans {
 	private Date updateAt;
 	private Integer status;
 	private String statusName;
-	
+	private String cateSecName;
 	public Integer getCateThrId() {
 		return cateThrId;
 	}
@@ -66,5 +66,11 @@ public class CategoryThrBeans {
 	}
 	public void setStatusName(String statusName) {
 		this.statusName = statusName;
+	}
+	public String getCateSecName() {
+		return cateSecName;
+	}
+	public void setCateSecName(String cateSecName) {
+		this.cateSecName = cateSecName;
 	}
 }

@@ -322,6 +322,7 @@ function initData(){
 					str = str + tdSt + data.list[i].statusName + tdEn;
 					str = str + tdSt + data.list[i].cateThrIndex + tdEn;
 					str = str + tdSt + data.list[i].createAt + tdEn;
+					str = str + tdSt + data.list[i].cateSecName + tdEn;
 					str = str + opt + '</tr>';
 					appe = appe + str;
 				}

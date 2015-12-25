@@ -26,6 +26,7 @@ public class CategorySecBeans {
 	private Date updateAt;
 	private Integer status;
 	private String statusName;
+	private String categoryName;
 	
 	private List<CategoryThrBeans> categoryThr;
 	
@@ -88,5 +89,11 @@ public class CategorySecBeans {
 	}
 	public void setCategoryThr(List<CategoryThrBeans> categoryThr) {
 		this.categoryThr = categoryThr;
+	}
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 }

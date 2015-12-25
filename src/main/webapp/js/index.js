@@ -1,5 +1,6 @@
 var serUrl = 'http://localhost:8080/mysql/';
 $(function(){
+	init_cate();
 	//是否登录
 	isLogin();
 	//退出

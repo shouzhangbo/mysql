@@ -364,7 +364,7 @@ function initData(){
 					str = str + tdSt + data.list[i].productDesc + tdEn;
 					str = str + tdSt + data.list[i].productStatusName + tdEn;
 					str = str + tdSt + data.list[i].cateThrName + tdEn;
-					str = str + tdSt + '<img src="../../images/proImg9.jpg" />' + tdEn;
+					str = str + tdSt + '<img src="'+data.list[i].productImgFirst+'" />' + tdEn;
 					str = str + tdSt + '1000' + tdEn;
 					str = str + tdSt + '$12.00' + tdEn;
 					str = str + tdSt + data.list[i].createAt + tdEn;

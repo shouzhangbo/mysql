@@ -77,7 +77,7 @@ public class BGProductCtrl {
 			BeanCopier copier = BeanCopier.create(Category.class, CategoryBeans.class,
                     false);
             copier.copy(cList.get(i), cb, null);
-//            cb.setSecList(getSecSet(cList.get(i).getCategorySec()));
+            cb.setSecList(getSecSet(cList.get(i).getCategorySec()));
             list.add(cb);
 		}
 		cate.setList(list);
@@ -100,6 +100,7 @@ public class BGProductCtrl {
 			BeanCopier copier = BeanCopier.create(CategorySec.class, CategorySecBeans.class,
                     false);
             copier.copy(s, bean, null);
+            bean.setCategoryName(s.getCategory().getCategoryName());
 			list.add(bean);
 		}
 		sec.setRespCode(GlobalConstant.successRespCode);
@@ -122,6 +123,7 @@ public class BGProductCtrl {
 			BeanCopier copier = BeanCopier.create(CategoryThr.class, CategoryThrBeans.class,
                     false);
             copier.copy(s, bean, null);
+            bean.setCateSecName(s.getCategorySec().getCateSecName());
 			list.add(bean);
 		}
 		sec.setRespCode(GlobalConstant.successRespCode);
@@ -145,8 +147,8 @@ public class BGProductCtrl {
 			BeanCopier copier = BeanCopier.create(Product.class, ProductBeans.class,
                     false);
             copier.copy(pro, cb, null);
-//            cb.setBrandName(pro.getBrand().getBrandName());
-//            cb.setCateThrName(pro.getCategoryThr().getCateThrName());
+            cb.setBrandName(pro.getBrand().getBrandName());
+            cb.setCateThrName(pro.getCategoryThr().getCateThrName());
             list.add(cb);
 		}
 		p.setList(list);
