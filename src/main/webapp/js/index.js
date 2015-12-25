@@ -210,6 +210,13 @@ $(function(){
 	//快报
 		
 });
+function kuaibao(){
+	var length = $('.ad-recomm-li li').length;
+	it i=1;
+	if(i>length){
+		
+	}
+}
 //添加购物车
 $('.btn-add-shop').on('click',test);
 function test(event) {
