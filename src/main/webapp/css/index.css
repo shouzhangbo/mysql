@@ -129,6 +129,7 @@ a{text-decoration:none;}
 .rang-left-bom-p{background: url(../images/index-ico.png) no-repeat -77px -72px;width:27px;height:28px;margin-right:5px;}
 .ad-recomm-txt{height:73px;overflow:hidden;}
 .ad-recomm-li{height:150px;}
+.ad-recomm-li li{cursor:pointer;}
 
 .bottom{margin:0px auto;width:400px;margin-top:30px;text-align:center;line-height:26px;}
 .bottom-1,.bottom-2{margin:0px auto;width:300px;}

@@ -208,14 +208,25 @@ $(function(){
 		rightSin();
 	});
 	//快报
-		
+	kuaibaofun();
 });
+function kuaibaofun(){
+	var speed=50
+	var txt = document.getElementById("ad-recomm-txt");
+	var li = document.getElementById("ad-recomm-li");
+	li.innerHTML = li.innerHTML+li.innerHTML;
+	var MyMar=setInterval(kuaibao,speed)
+    txt.onmouseover=function() {clearInterval(MyMar)}
+    txt.onmouseout=function() {MyMar=setInterval(kuaibao,speed)}
+}
 function kuaibao(){
-	var length = $('.ad-recomm-li li').length;
-	it i=1;
-	if(i>length){
-		
-	}
+	var txt = document.getElementById("ad-recomm-txt");
+	var li = document.getElementById("ad-recomm-li");
+    if(li.offsetTop-txt.scrollTop<=0){
+    	txt.scrollTop-=li.offsetHeight/2;
+	}else{
+   		txt.scrollTop++;
+    }
 }
 //添加购物车
 $('.btn-add-shop').on('click',test);
