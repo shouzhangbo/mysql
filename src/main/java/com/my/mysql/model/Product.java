@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
 @Entity   
 @Table(name="product")
 public class Product {
@@ -61,6 +63,7 @@ public class Product {
 	private CategoryThr categoryThr;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
 	private Set<OrderInfo> orderInfo;
 
 	public Integer getProductId() {

@@ -4,22 +4,6 @@ function isLogin(){
 }
 //加载种类
 function init_cate(){
-	/*<li>
-		<p class="fl font14 nav-txt">家电</p><p class="fr pr-10">></p>
-		<div class="ad-left-nav-gai">
-			<dl>
-				<dt>白色家电</dt>
-				<dd>三星</dd>
-				<dd>三星</dd>
-				<dd>三星</dd>
-				<dd>三星</dd>
-				<dd>三星</dd>
-				<dd>三星</dd>
-				<dd>三星</dd>
-				<dd>三星</dd>
-			</dl>
-		</div>
-	</li>*/
 	$('.ad-left-nav').append('');
 	var Oli = '';
 	var lii = '<li><p class="fl font14 nav-txt"><a href="';

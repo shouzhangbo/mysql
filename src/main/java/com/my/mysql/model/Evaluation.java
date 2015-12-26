@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
 @Entity   
 @Table(name="eval")
 public class Evaluation {
@@ -37,6 +39,7 @@ public class Evaluation {
 	private Date UpdateAt;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "evaluation")
+	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
 	private Set<Order> orderInfo;
 	
 	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE }, optional = true)
