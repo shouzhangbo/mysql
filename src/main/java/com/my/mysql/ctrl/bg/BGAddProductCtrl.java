@@ -189,6 +189,10 @@ public class BGAddProductCtrl {
 		 pro.setBrand(brand);
 		 pro.setCategoryThr(thr);
 		 
+		 pro.setSaleNum(0);
+		 pro.setStock(productForm.getStock());
+		 pro.setPrice(productForm.getPrice());
+		 pro.setNowNum(productForm.getStock());
 		 pro.setProductName(productForm.getProductName());
 		 pro.setProductDesc(productForm.getProductDesc());
 		 pro.setProductImgFirst(productForm.getProductImgFirst());

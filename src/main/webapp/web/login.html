@@ -52,12 +52,12 @@
 						}
 					});
 					$('.btn-submit').click(function(){
-						setCookie("username","houzhangbo");
+						/*setCookie("username","houzhangbo");
 						alert(getCookie("username"));
-						setLocalStorage("username","houzhangbo");
+						setLocalStorage("username","houzhangbo");*/
 						//alert(window.localStorage.getItem("username"));
 						window.location.href="index.html";
-						/*if($('#user-name').val()==''||$('#user-name').val()=='请输入用户名'){
+						if($('#user-name').val()==''||$('#user-name').val()=='请输入用户名'){
 							isRe = false;
 						}
 						if(isRe){
@@ -65,11 +65,13 @@
 								type: "POST",
 								url: "http://localhost:8080/mysql/login.json",
 								data:{
-									userName:$('#user-name').val()
+									userName:$('#user-name').val(),
+									baseUserPsd:$('#psd').val()
 								},
 								dataType: "json",
 								success: function(data){
 									if('0000'==data.respCode){
+										localStorage.username=$('#user-name').val();
 										window.location.href="index.html";	
 									}else{
 										alert('登录失败');	
@@ -81,7 +83,7 @@
 							});	
 						}else{
 							alert('请输入用户名或密码');	
-						}*/
+						}
 					});
 				});
             </script>

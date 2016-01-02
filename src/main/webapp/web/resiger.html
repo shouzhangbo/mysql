@@ -94,7 +94,26 @@
 						if(!isRe){
 							alert('请完善信息');
 						}else{
-							window.location.href = 'perfect.html';
+							$.ajax({
+								type: "POST",
+								url: "http://localhost:8080/mysql/register.json",
+								data:{
+									userName:$('#user-name').val(),
+									baseUserPsd:$('#psd').val()
+								},
+								dataType: "json",
+								success: function(data){
+									if('0000'==data.respCode){
+										localStorage.username=$('#user-name').val();
+										window.location.href = 'perfect.html';
+									}else{
+										alert('登录失败');
+									}
+								},
+								error:function(){     
+								  alert('网络异常。')
+								}
+							});
 						}
 					});
 				});

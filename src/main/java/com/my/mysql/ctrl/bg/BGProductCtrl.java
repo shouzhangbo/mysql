@@ -158,6 +158,29 @@ public class BGProductCtrl {
 		p.setTotalPage(count%form.getPageSize()==0?count/form.getPageSize():count/form.getPageSize()+1);
 		return p;
 	}
+	
+	@RequestMapping(value = "/deletProduct", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+	public BaseResponse deleteProduct(Integer productId,
+			HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*" );
+		BaseResponse p = new BaseResponse();
+		try{
+			Product pro = productService.findById(Product.class, productId);
+			if(!CommUtil.isEmpty(pro)){
+				int count = productService.deleteByProperty(Product.class,"productId",productId);
+				System.out.println("count="+count);
+			}else{
+				return p;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			return p;
+		}
+		p.setRespCode(GlobalConstant.successRespCode);
+		p.setRespMsg("success");
+		return p;
+	}
 	/**
 	 * 
 	 * @param set

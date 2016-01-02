@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.my.mysql.constants.GlobalConstant;
+import com.my.mysql.model.BaseUser;
 import com.my.mysql.model.Product;
 import com.my.mysql.response.BaseResponse;
 import com.my.mysql.response.ShopCarResponse;
 import com.my.mysql.response.bean.ProductBean;
+import com.my.mysql.service.BaseUserService;
 import com.my.mysql.service.ProductService;
 import com.my.mysql.util.CommUtil;
 import com.my.mysql.util.RedisUtil;
@@ -26,11 +32,26 @@ public class ShopCarCtrl {
 
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private BaseUserService baseUserService;
 	
 	@RequestMapping(value = "/add", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-	public BaseResponse add(String userId,Integer productId,Integer num){
+	public BaseResponse add(String userId,Integer productId,Integer num,HttpServletRequest request,HttpServletResponse response)
+	{
+		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse b = new BaseResponse();
+		HttpSession session = request.getSession();
+		BaseUser user = (BaseUser) session.getAttribute("user");
+		if(CommUtil.isEmpty(user)){
+			b.setRespCode("1000");
+			return b;
+		}
+		List<BaseUser> baseUserList = baseUserService.findByProperty(BaseUser.class, "userName", userId);
+		if(CommUtil.isEmpty(baseUserList)||baseUserList.size()<1){
+			b.setRespMsg("该用户不存在");
+			return b;
+		}
 		RedisUtil redis = new RedisUtil();
 		//先判断商品是否存在
 		Product pro = productService.findById(Product.class, productId);
@@ -68,8 +89,15 @@ public class ShopCarCtrl {
 	}
 	@RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-	public BaseResponse delete(String userId,Integer productId,Integer num){
+	public BaseResponse delete(String userId,Integer productId,Integer num,HttpServletRequest request,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse b = new BaseResponse();
+		HttpSession session = request.getSession();
+		BaseUser user = (BaseUser) session.getAttribute("user");
+		if(CommUtil.isEmpty(user)){
+			b.setRespCode("1000");
+			return b;
+		}
 		RedisUtil redis = new RedisUtil();
 		List<String> list = redis.queryListAll(userId);
 		if(!CommUtil.isEmpty(list)){
@@ -86,22 +114,29 @@ public class ShopCarCtrl {
 	}
 	@RequestMapping(value = "/query", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-	public BaseResponse query(String userId){
+	public ShopCarResponse query(String userId,HttpServletRequest request,HttpServletResponse response)
+	{
+		response.setHeader("Access-Control-Allow-Origin", "*" );
 		ShopCarResponse b = new ShopCarResponse();
+		HttpSession session = request.getSession();
+		BaseUser user = (BaseUser) session.getAttribute("user");
+		if(CommUtil.isEmpty(user)){
+			b.setRespCode("1000");
+		}
 		RedisUtil redis = new RedisUtil();
 		List<String> list = redis.queryListAll(userId);
 		List<ProductBean> beanList = new ArrayList<ProductBean>();
-		if(!CommUtil.isEmpty(list)){
+		if(!CommUtil.isEmpty(list)&&list.size()>0){
 			for(int i=0;i<list.size();i++){
 				System.out.println("++++++++"+list);
 				Map<String,String> getMap = CommUtil.getMapByStr(list.get(i));
 				System.out.println("map="+getMap.get("num"));
 				System.out.println("productService="+getMap.get("productId"));
-				Product pro = productService.findById(Product.class, Integer.parseInt(getMap.get("productId")));
-				System.out.println("pro="+pro.getProductDesc());
+				List<Product> pro = productService.findByProperty(Product.class,"productId", Integer.parseInt(getMap.get("productId")));
+				System.out.println("pro="+pro.get(0).getProductDesc());
 				if(!CommUtil.isEmpty(pro)){
 					Map<String,Object> bean = new HashMap<String,Object>();
-					ProductBean bean1 = new ProductBean(pro);    
+					ProductBean bean1 = new ProductBean(pro.get(0));    
 					beanList.add(bean1);
 				}
 			}

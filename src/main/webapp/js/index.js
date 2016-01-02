@@ -1,8 +1,13 @@
 var serUrl = 'http://localhost:8080/mysql/';
 $(function(){
+	//加载种类
 	init_cate();
+	//加载商品
+	init_pro();
 	//是否登录
 	isLogin();
+	//加载购物车
+	init_shopcar();
 	//退出
 	$('.tuichu').click(function(){
 		setLocalStorage("username",null);
@@ -229,7 +234,7 @@ function kuaibao(){
     }
 }
 //添加购物车
-$('.btn-add-shop').on('click',test);
+$('.btn-add-shop').live('click',test);
 function test(event) {
 	if(parseInt($(this).siblings('.shop-input').val())>0){
 		$('.shopbar-mount').html(parseInt($(this).siblings('.shop-input').val())+parseInt($('.shopbar-mount').html()));	
@@ -237,16 +242,16 @@ function test(event) {
 		//用户，商品id，数量
 		$.ajax({
 			type: "POST",
-			url: "http://localhost:8080/mysql/addShopCar.json",
+			url: "http://localhost:8080/mysql/redis/add.json",
 			data:{
-				userName:'',
-				productId:1,
-				productCount:1
+				userId:localStorage.username,
+				productId:$(this).siblings(".productId").val(),
+				num:$(this).siblings(".shop-input").val()
 			},
 			dataType: "json",
 			success: function(data){
 				if('0000'==data.respCode){
-					window.location.href="index.html";	
+					init_shopcar();
 				}else{
 					alert('登录失败');
 				}
@@ -257,9 +262,9 @@ function test(event) {
 		});
 		
 		//组建数组
-		var proArr = new Array();
+		/*var proArr = new Array();
 		var proDate = 
-		proData.push();
+		proData.push();*/
 	}else{
 		return;	
 	}

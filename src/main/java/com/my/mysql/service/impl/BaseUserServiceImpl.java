@@ -27,7 +27,7 @@ public class BaseUserServiceImpl extends BaseServiceImpl<BaseUser> implements Ba
 		Map<String,Object> map = new HashMap<String,Object>();
 		String sql = "from BaseUser where userName=:userName and basePsd=:basePsd and status=:status";
 		map.put("userName", user.getUserName());
-		map.put("basePsd", user.getBaseUserPsd());
+		map.put("basePsd", CommUtil.MD5(user.getBaseUserPsd()));
 		map.put("status", GlobalConstant.okInt);
 		List<BaseUser> list = baseDao.find(sql, map);
 		if(!CommUtil.isEmpty(list)&&list.size()>0){

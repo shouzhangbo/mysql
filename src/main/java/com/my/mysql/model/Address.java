@@ -23,7 +23,7 @@ public class Address {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "addrss_id",length=11)
+    @Column(name = "address_id",length=11)
 	private Integer addressId;
 	@Column(name = "address_street",length=100)
 	private String addressStreet;

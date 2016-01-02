@@ -126,9 +126,9 @@ $('.btn-add-new').live("click", function(){
 			brandId:1,
 			productName:$('.file-1').val(),
 			productDesc:$('.file-2').val(),
-			categoryIndex:$('.file-3').val(),
-			price:10,
-			stock:10,
+			categoryIndex:$('.file-3').val(),s
+			price:$('.file-7').val(),
+			stock:$('.file-6').val(),
 			productImgFirst:$('#img1').attr('src')
 		},
 		dataType: "json",
@@ -219,20 +219,20 @@ $('.update').live('click',function(){
 $('.delete').live('click',function(){
 	var str=$(this).parent().prevAll()[3].innerHTML;
 	$('.alertbox-1 .alertbox-content').html('你确定要删除'+str+'商品吗？');
-	$('.alertbox-1 .btn-ok').attr('onClick','deleDate('+$(this).parent().prevAll()[1].innerHTML+');');
+	$('.alertbox-1 .btn-ok').attr('onClick','deleDate('+$(this).parent().prevAll()[8].innerHTML+');');
 	$('.alertbox-1').show();
 });
 //确认删除
 function deleDate(id){
 	$.ajax({
 		type: "POST",
-		url: serUrl+"deletCategory.json",
+		url: serUrl+"deletProduct.json",
 		data:{
-			categoryId:id
+			productId:id
 		},
 		dataType: "json",
 		success: function(data){
-			console.log(data)
+			console.log('date======'+data)
 			alert('ok');
 			$('.alertbox').hide();
 			remove();

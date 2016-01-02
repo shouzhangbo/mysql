@@ -91,7 +91,22 @@
         	<div class="order-main-txt">
             	<div class="receive-addres">
                 	收件人信息：
-                    <ul  class="ml-10 receive-li">
+                	<table class="add-revece">
+                		<tbody>
+	                		<tr>
+		                		<td>省份:</td>
+		                		<td><select class="prvience"><option>山东</option><option>北京</option></select>
+		                		<select class="city"><option>济南</option></select>
+		                		<select class="city-qu"><option>市中区</option><option>天桥区</option></select>
+		                		</td>
+	                		</tr>
+	                		<tr><td>详细地址:</td><td><input type="text" class="ress-xiangxi" /></td></tr>
+	                		<tr><td>收件人:</td><td><input type="text" class="reveice-man" /></td></tr>
+	                		<tr><td>收件人电话:</td><td><input type="text" class="reveice-phone" /></td></tr>
+	                		<tr><td><input type="button" class="add-ress" value="添加" /></td></tr>
+                		</tbody>
+                	</table>
+                    <ul  class="ml-10 receive-li hide">
                     	<li>
                         	<span class="fl ">收货地址1</span>
 							<div class="fl ml-10">
@@ -103,6 +118,7 @@
                         </li>
                     </ul>
                     <div class="orther-rece">选择其他的地址</div>
+                    <input type="button" class="new-address hide" value="新增地址" />
                 </div>
                 
                 <div class="pay-stle mt-10">
@@ -179,10 +195,111 @@
                 </table>
             </div>
             <div class="cl"></div>
-            <input type="button" class="fr mt-10 btn btn-red" value="提交订单" />
+            <input type="button" class="fr mt-10 btn btn-red btn-sub" value="提交订单" />
             <span class="fr mt-10 mr-10">还应支付：￥1900.00</span>
         </div>
     </div>
     <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script>
+    	$(function(){
+    		initdata();
+    		$('.new-address').click(function(){
+    			$('.add-revece').show();
+				$('.receive-li').hide();
+				$('.new-address').hide();
+    		});
+    		$('.orther-rece').click(function(){
+    			$('.receive-li li').show();
+    		});
+    		$('.btn-sub').click(function(){
+    			$.ajax({
+        			type: "POST",
+        			url: "http://localhost:8080/mysql/order/add.json",
+        			data:{
+        				userName:localStorage.username,
+        				list:localStorage.list,
+        				addressId:$('.receive-li li.active').find('.productId').val()
+        			},
+        			dataType: "json",
+        			success: function(data){
+        				if('0000'==data.respCode){
+        					widow.location.href="";
+        				}
+        			}
+    			});
+    		})
+    		$('.add-ress').click(function(){
+    			$.ajax({
+        			type: "POST",
+        			url: "http://localhost:8080/mysql/address/add.json",
+        			data:{
+        				userName:localStorage.username,
+        				addressStreet:$('.prvience option:selected').text()+$('.city option:selected').text()+$('.city-qu option:selected').text(),
+        				addressInfo:$('.ress-xiangxi').val(),
+        				receivePhone:$('.reveice-man').val(),
+        				receiveMan:$('.reveice-phone').val()
+        			},
+        			dataType: "json",
+        			success: function(data){
+        				if('0000'==data.respCode){
+        					$('.add-revece').hide();
+        					$('.receive-li').show();
+        					$('.new-address').show();
+        					initdata();
+        				}
+        			}
+    			});
+    		});
+    	})
+    	$('.receive-li li').live('click',function(){
+    			$('.receive-li li').hide();
+    			$(this).addClass('active');
+    			$(this).show();
+    		})
+    	function initPro(){
+    		var list  = localStorage.list;
+    		var json = eval("("+list+")")
+    		var arr = json.list;
+    		for(var i=0;i<arr.length;i++){
+    			arr[i].productId;
+    		}
+    	}
+    	function initdata(){
+    			$.ajax({
+        			type: "POST",
+        			url: "http://localhost:8080/mysql/address/query.json",
+        			data:{
+        				userName:localStorage.username,
+        			},
+        			dataType: "json",
+        			success: function(data){
+        				if('0000'==data.respCode){
+        					var str = '';
+        					if(data.list.length>0){
+	        					for(var i=0;i<data.list.length;i++){
+	        						str = str + '<li><span class="fl ">收货地址'+i+'</span>';
+	        						str = str + '<input type="hidden" class="addressId" value="'+data.list[i].addressId+'" />';
+	        						str = str + '<div class="fl ml-10"><span class="receive-man">'+data.list[i].receiveMan+'</span>';
+	        						str = str + '<span class="address-street">'+data.list[i].addressStreet+'</span>';
+	        						str = str + ' <span class="address-info">'+data.list[i].addressInfo+'</span>';
+	        						str = str + ' <span class="receive-phone">'+data.list[i].receivePhone+'</span></div></li>';
+	        					}
+	        					$('.add-revece').hide('hide');
+	        					$('.new-address').show();
+	        					$('.receive-li').show();//('hide');
+	        					$('.receive-li').children('li').remove();
+	        					$('.receive-li').append(str);
+	        					if(data.list.length>1){
+	        						for(var i=1;i<$('.receive-li li').length;i++){
+	        							$('.receive-li li').eq(i).hide();
+	        						}
+	        					}
+        					}else{
+        					}
+        				}
+        			}
+    			});
+    	}
+    </script>
 </body>
 </html>

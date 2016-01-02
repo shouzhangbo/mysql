@@ -90,7 +90,7 @@
         	<table width="100%" class="shop-car-table">
         		<thead>
         			<tr>
-        				<th><input type="checkbox" />全选</th>
+        				<th><input type="checkbox" class="add-pro-check" />全选</th>
         				<th width="50%">商品</th>
         				<th>价格</th>
         				<th>数量</th>
@@ -100,7 +100,7 @@
         		</thead>
         		<tbody>
         			<tr>
-        				<td><input type="checkbox" /></td>
+        				<td><input type="checkbox" class="pro-check" /></td>
         				<td>
         					<img src="../images/proImg2.jpg" class="fl shop-tab-img" />
         					<div class="fl mt-10">
@@ -118,7 +118,7 @@
         				<a href="">移除到我的关注</a></td>
         			</tr>
                     <tr>
-        				<td><input type="checkbox" /></td>
+        				<td><input type="checkbox" class="pro-check" /></td>
         				<td>
         					<img src="../images/proImg2.jpg" class="fl shop-tab-img" />
         					<div class="fl mt-10">
@@ -138,10 +138,72 @@
         		</tbody>
         	</table>
             
-            <input type="button" class="fr mt-10 btn btn-red" value="提交订单" />
+            <input type="button" class="fr mt-10 btn btn-red" value="创建订单" />
             <span class="fr mt-10 mr-10">还应支付：￥1900.00</span>
         </div>
     </div>
     <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script>
+    	$(function(){
+    		$('.btn-red').click(function(){
+    			var k=0;
+    			var arr = new Array();
+   				for(var i=0;i<$('.pro-check').length;i++){
+   					if($('.pro-check').eq(i).attr('checked')){
+   						k++;
+						var str = {
+							"productId":$('.pro-check').eq(i).parent().parent().find('.count').val(),
+							"count":$('.pro-check').eq(i).parent().parent().find('.count').html()
+						};
+						arr.push(str);
+   					}
+   				}
+   				var list = {"list":arr};
+   				if(k==0){
+   					alert('请选择一个商品')
+   					return false;
+   				}
+   				localStorage.list = list;
+    			window.location.href="order.html";
+    		});
+    		$('.add-pro-check').click(function(){
+    			if($(this).attr('checked')){
+    				$('.pro-check').attr('checked','checked');
+    			}else{
+    				$('.pro-check').removeAttr('checked');
+    			}
+    		})
+    		initData();
+    	})
+    	function initData(){
+    		var str = "";
+    		$.ajax({
+    			type: "POST",
+    			url: "http://localhost:8080/mysql/redis/query.json",
+    			data:{
+    				userId:localStorage.username
+    			},
+    			dataType: "json",
+    			success: function(data){
+    				if(data.list.length>0){
+    					$('.product_info table tbody').children('tr').remove();
+    					for(var i=0;i<data.list.length;i++){
+    						str = str + '<tr><td><input type="checkbox" class="pro-check" /></td>';
+    						str = str + '<td><img src="'+data.list[i].productImgFirst+'" class="fl shop-tab-img" /><div class="fl mt-10"><a href="">'+data.list[i].productName+'<br/>USB3.0移动硬盘</a>';
+    						str = str + '</div><div class="fl"><p>颜色：经典新北极熊</p><p>尺码：1TB</p></div></td>';
+    						str = str + '<td>'+data.list[i].price+'</td>';
+    						str = str + '<td><p class="count">1</p><input type="hidden" value="'+data.list[i].productId+'" class="productId" /></td>';
+    						str = str + '<td>'+data.list[i].price+'</td>';
+    						str = str + '<td><a href="">删除</a><br/>';
+    						str = str + '<a href="">移除到我的关注</a></td></tr>';
+    					}
+    					$('.product_info table tbody').append(str);
+    				}else{
+    					
+    				}
+    			}
+    		});
+    	}
+    </script>
 </body>
 </html>
