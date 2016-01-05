@@ -2,8 +2,10 @@ package com.my.mysql.ctrl.bg;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +31,7 @@ import com.my.mysql.model.Category;
 import com.my.mysql.model.CategorySec;
 import com.my.mysql.model.CategoryThr;
 import com.my.mysql.model.Product;
+import com.my.mysql.model.view.ProductView;
 import com.my.mysql.response.BaseResponse;
 import com.my.mysql.response.CategoryResponse;
 import com.my.mysql.response.CategorySecResponse;
@@ -60,6 +63,14 @@ public class BGProductCtrl {
 	private BrandService brandService;
 	@Autowired
 	private ProductService productService;
+	@RequestMapping(value = "/testquery", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public Map<String,Object> get(ProductForm form){
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<ProductView> list = productService.queryProductView(form);
+		map.put("list", list);
+		return map;
+	}
 	/**
 	 * 查询商品种类
 	 * @return

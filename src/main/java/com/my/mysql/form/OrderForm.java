@@ -11,6 +11,8 @@ public class OrderForm {
 	private String startTime;
 	private String endTime;
 	
+	private Integer baseUserId;
+	
 	public Integer getOrderId() {
 		return orderId;
 	}
@@ -58,5 +60,11 @@ public class OrderForm {
 	}
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
+	}
+	public Integer getBaseUserId() {
+		return baseUserId;
+	}
+	public void setBaseUserId(Integer baseUserId) {
+		this.baseUserId = baseUserId;
 	}
 }

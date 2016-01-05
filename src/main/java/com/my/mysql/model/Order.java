@@ -33,10 +33,10 @@ public class Order {
 	private Integer orderPrice;
 	@Column(name = "order_no",length=32)
 	private String orderNo;
-	@Column(name = "Create_at", nullable = false)
-	private Date CreateAt;
-	@Column(name = "Update_at", nullable = false)
-	private Date UpdateAt;
+	@Column(name = "create_at", nullable = false)
+	private Date createAt;
+	@Column(name = "update_at", nullable = false)
+	private Date updateAt;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
 	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
@@ -110,15 +110,15 @@ public class Order {
 		this.evaluation = evaluation;
 	}
 	public Date getCreateAt() {
-		return CreateAt;
+		return createAt;
 	}
 	public void setCreateAt(Date createAt) {
-		CreateAt = createAt;
+		this.createAt = createAt;
 	}
 	public Date getUpdateAt() {
-		return UpdateAt;
+		return updateAt;
 	}
 	public void setUpdateAt(Date updateAt) {
-		UpdateAt = updateAt;
+		this.updateAt = updateAt;
 	}
 }

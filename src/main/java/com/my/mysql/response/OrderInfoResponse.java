@@ -1,9 +1,9 @@
-package com.my.mysql.ctrl;
+package com.my.mysql.response;
 
 import java.util.List;
 
-import com.my.mysql.ctrl.bg.OrderInfoBeans;
 import com.my.mysql.response.BaseResponse;
+import com.my.mysql.response.bean.OrderInfoBeans;
 
 public class OrderInfoResponse extends BaseResponse{
 

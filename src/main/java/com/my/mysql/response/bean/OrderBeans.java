@@ -1,4 +1,4 @@
-package com.my.mysql.ctrl.bg;
+package com.my.mysql.response.bean;
 
 import java.util.Date;
 

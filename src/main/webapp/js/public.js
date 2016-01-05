@@ -46,7 +46,7 @@ function initLeft(){
 			 "menu2":
 			 [
 			 	{"name":"商品种类","url":"后台-添加商品种类.html"},
-				{"name":"商品","url":"后台-添加商品.html"},
+				{"name":"商品","url":"product.html"},
 				{"name":"品牌","url":"后台-添加品牌.html"}
 			 ]
 			},

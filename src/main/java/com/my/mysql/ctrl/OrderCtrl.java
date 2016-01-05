@@ -1,6 +1,7 @@
 package com.my.mysql.ctrl;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -24,7 +25,9 @@ import com.my.mysql.model.BaseUser;
 import com.my.mysql.model.Order;
 import com.my.mysql.model.OrderInfo;
 import com.my.mysql.model.Product;
+import com.my.mysql.model.view.OrderView;
 import com.my.mysql.response.BaseResponse;
+import com.my.mysql.response.OrderViewResponse;
 import com.my.mysql.service.AddressService;
 import com.my.mysql.service.BaseUserService;
 import com.my.mysql.service.OrderInfoService;
@@ -136,10 +139,14 @@ public class OrderCtrl {
 	}
 	@RequestMapping(value = "/query", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-	public OrderResponse query(OrderForm orderForm,
+	public OrderViewResponse query(OrderForm orderForm,
 			HttpServletRequest request,HttpServletResponse response){
-		OrderResponse b = new OrderResponse();
+		OrderViewResponse b = new OrderViewResponse();
 		
+		List<OrderView> list = new ArrayList<OrderView>();
+		list = orderService.queryByView(orderForm);
+		b.setList(list);
+		b.setRespCode(GlobalConstant.successRespCode);
 		return b;
 	}
 	
