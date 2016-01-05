@@ -52,7 +52,7 @@ public class TestUserInfo {
 		userInfo.setUpdateAt(new Date());
 		userInfo.setBaseInfo(list.get(0));
 	}
-	@Test
+//	@Test
 	public void testt(){
 		String sql = "from Category where status=:status";
 		Map<String,Object> obj = new HashMap<String,Object>();

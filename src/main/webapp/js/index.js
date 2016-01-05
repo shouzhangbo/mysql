@@ -1,4 +1,4 @@
-var serUrl = 'http://localhost:8080/mysql/';
+var serUrl = 'http://192.168.1.112:8080/mysql/';
 $(function(){
 	//加载种类
 	init_cate();
@@ -242,7 +242,7 @@ function test(event) {
 		//用户，商品id，数量
 		$.ajax({
 			type: "POST",
-			url: "http://localhost:8080/mysql/redis/add.json",
+			url: "http://192.168.1.112:8080/mysql/redis/add.json",
 			data:{
 				userId:localStorage.username,
 				productId:$(this).siblings(".productId").val(),

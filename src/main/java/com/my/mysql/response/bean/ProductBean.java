@@ -5,7 +5,7 @@ import com.my.mysql.model.Product;
 public class ProductBean {
 
 	public ProductBean(){}
-	public ProductBean(Product pro){
+	public ProductBean(Product pro,Integer count){
 		this.productId = pro.getProductId();
 		this.productName = pro.getProductName();
 		this.productDesc =  pro.getProductDesc();
@@ -18,6 +18,7 @@ public class ProductBean {
 		this.stock = pro.getStock();
 		this.saleNum = pro.getSaleNum();
 		this.nowNum = pro.getNowNum();
+		this.count = count;
 	}
 	private Integer productId;
 	private String productName;
@@ -31,6 +32,7 @@ public class ProductBean {
 	private Integer stock;
 	private Integer saleNum;
 	private Integer nowNum;
+	private Integer count;
 	public Integer getProductId() {
 		return productId;
 	}
@@ -97,4 +99,11 @@ public class ProductBean {
 	public void setProductStatus(Integer productStatus) {
 		this.productStatus = productStatus;
 	}
+	public Integer getCount() {
+		return count;
+	}
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+	
 }

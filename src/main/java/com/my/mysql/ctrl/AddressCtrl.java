@@ -45,7 +45,7 @@ public class AddressCtrl {
 		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse b = new BaseResponse();
 		HttpSession session = request.getSession();
-		BaseUser user = (BaseUser) session.getAttribute("user");
+		BaseUser user = (BaseUser) session.getAttribute(userName);
 		if(CommUtil.isEmpty(user)){
 			b.setRespCode("1000");
 //			return b;
@@ -72,7 +72,7 @@ public class AddressCtrl {
 		AddressResponse b = new AddressResponse();
 		response.setHeader("Access-Control-Allow-Origin", "*" );
 		HttpSession session = request.getSession();
-		BaseUser user = (BaseUser) session.getAttribute("user");
+		BaseUser user = (BaseUser) session.getAttribute(userName);
 		if(CommUtil.isEmpty(user)){
 			b.setRespCode("1000");
 //			return b;

@@ -1,5 +1,5 @@
 // JavaScript Document
-var serUrl = "http://localhost:8080/mysql/";
+var serUrl = "http://192.168.1.112:8080/mysql/";
 $(function(){
 	initLeft();
 	$('.left dl dd').hide();

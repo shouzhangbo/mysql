@@ -42,7 +42,7 @@ public class ShopCarCtrl {
 		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse b = new BaseResponse();
 		HttpSession session = request.getSession();
-		BaseUser user = (BaseUser) session.getAttribute("user");
+		BaseUser user = (BaseUser) session.getAttribute(userId);
 		if(CommUtil.isEmpty(user)){
 			b.setRespCode("1000");
 			return b;
@@ -68,7 +68,6 @@ public class ShopCarCtrl {
 		
 		if(!CommUtil.isEmpty(list)){
 			for(int i=0;i<list.size();i++){
-				System.out.println("++++"+list.get(i));
 				Map<String,String> getMap = CommUtil.getMapByStr(list.get(i));
 				if(getMap.get("productId").equals(""+productId)){
 					map.put("num", getMap.get("num")+num);
@@ -89,11 +88,12 @@ public class ShopCarCtrl {
 	}
 	@RequestMapping(value = "/delete", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-	public BaseResponse delete(String userId,Integer productId,Integer num,HttpServletRequest request,HttpServletResponse response){
+	public BaseResponse delete(String userId,Integer productId,Integer num,
+			HttpServletRequest request,HttpServletResponse response){
 		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse b = new BaseResponse();
 		HttpSession session = request.getSession();
-		BaseUser user = (BaseUser) session.getAttribute("user");
+		BaseUser user = (BaseUser) session.getAttribute(userId);
 		if(CommUtil.isEmpty(user)){
 			b.setRespCode("1000");
 			return b;
@@ -119,7 +119,7 @@ public class ShopCarCtrl {
 		response.setHeader("Access-Control-Allow-Origin", "*" );
 		ShopCarResponse b = new ShopCarResponse();
 		HttpSession session = request.getSession();
-		BaseUser user = (BaseUser) session.getAttribute("user");
+		BaseUser user = (BaseUser) session.getAttribute(userId);
 		if(CommUtil.isEmpty(user)){
 			b.setRespCode("1000");
 		}
@@ -128,15 +128,11 @@ public class ShopCarCtrl {
 		List<ProductBean> beanList = new ArrayList<ProductBean>();
 		if(!CommUtil.isEmpty(list)&&list.size()>0){
 			for(int i=0;i<list.size();i++){
-				System.out.println("++++++++"+list);
 				Map<String,String> getMap = CommUtil.getMapByStr(list.get(i));
-				System.out.println("map="+getMap.get("num"));
-				System.out.println("productService="+getMap.get("productId"));
 				List<Product> pro = productService.findByProperty(Product.class,"productId", Integer.parseInt(getMap.get("productId")));
-				System.out.println("pro="+pro.get(0).getProductDesc());
 				if(!CommUtil.isEmpty(pro)){
 					Map<String,Object> bean = new HashMap<String,Object>();
-					ProductBean bean1 = new ProductBean(pro.get(0));    
+					ProductBean bean1 = new ProductBean(pro.get(0),Integer.parseInt(getMap.get("num")));    
 					beanList.add(bean1);
 				}
 			}

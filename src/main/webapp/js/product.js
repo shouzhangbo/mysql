@@ -1,5 +1,5 @@
 // JavaScript Document
-var serUrl = "http://localhost:8080/mysql/";
+var serUrl = "http://192.168.1.112:8080/mysql/";
 var productName = "",status=2,start='',end='',pageSize=5,currentPage=1,totalPage=0;
 $(function(){
 	initFa();
@@ -126,7 +126,7 @@ $('.btn-add-new').live("click", function(){
 			brandId:1,
 			productName:$('.file-1').val(),
 			productDesc:$('.file-2').val(),
-			categoryIndex:$('.file-3').val(),s
+			categoryIndex:$('.file-3').val(),
 			price:$('.file-7').val(),
 			stock:$('.file-6').val(),
 			productImgFirst:$('#img1').attr('src')

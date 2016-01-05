@@ -48,7 +48,7 @@
 						}else{
 							$.ajax({
 								type: "POST",
-								url: "http://localhost:8080/mysql/isRegister.json",
+								url: "http://192.168.1.112:8080/mysql/isRegister.json",
 								data:{
 									userName:$('#user-name').val()
 								},
@@ -96,7 +96,7 @@
 						}else{
 							$.ajax({
 								type: "POST",
-								url: "http://localhost:8080/mysql/register.json",
+								url: "http://192.168.1.112:8080/mysql/register.json",
 								data:{
 									userName:$('#user-name').val(),
 									baseUserPsd:$('#psd').val()

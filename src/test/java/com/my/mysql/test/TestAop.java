@@ -31,23 +31,23 @@ public class TestAop {
 		user.setCreateAt(new Date());
 		userService.save(user);
 	}
-	public static void main(String[] args) {
-		//启动Spring容器
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring-hibernate.xml");
-		//获取service组件
-		UserInfoService service = (UserInfoService) context.getBean("userService");
-		//以普通的方式调用UserService对象的三个方法
-		UserInfo user = new UserInfo();
-		user.setUpdateAt(new Date());
-		user.setUserEmail("ee");
-		user.setUserMobile("eeee");
-		user.setCreateAt(new Date());
-		//service.get(1L);
-		try {
-			service.save(user);
-//			service.delete(1L);
-		} catch (Exception e) {
-			System.out.println("Delete user : " + e.getMessage());
-		}
-	}
+//	public static void main(String[] args) {
+//		//启动Spring容器
+//		ApplicationContext context = new ClassPathXmlApplicationContext("spring-hibernate.xml");
+//		//获取service组件
+//		UserInfoService service = (UserInfoService) context.getBean("userService");
+//		//以普通的方式调用UserService对象的三个方法
+//		UserInfo user = new UserInfo();
+//		user.setUpdateAt(new Date());
+//		user.setUserEmail("ee");
+//		user.setUserMobile("eeee");
+//		user.setCreateAt(new Date());
+//		//service.get(1L);
+//		try {
+//			service.save(user);
+////			service.delete(1L);
+//		} catch (Exception e) {
+//			System.out.println("Delete user : " + e.getMessage());
+//		}
+//	}
 }

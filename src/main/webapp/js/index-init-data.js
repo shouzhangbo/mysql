@@ -63,10 +63,10 @@ function init_pro(){
 		dataType: "json",
 		success: function(data){
 			if('0000'==data.respCode){
-				$('.main-recomm-con').children('li').remove();
+				$('.main-recomm-con-1').children('li').remove();
 				var str = '';
 				for(var i=0;i<data.list.length;i++){
-					str = '<li><div class="recomm-img"><img src="'+data.list[i].productImgFirst+'" /></div>';
+					str = str + '<li><div class="recomm-img"><img src="'+data.list[i].productImgFirst+'" /></div>';
 					str = str + '<div class="recomm-price fl">￥12.00</div>';
 					str = str + '<div class="recomm-price fl ml-10">'+data.list[i].productName+'</div>';
 					str = str + '<div class="cl"></div>';
@@ -83,7 +83,7 @@ function init_pro(){
 					str = str + '<div class="recomm-company mt-10">'+data.list[i].brandName+'</div>';
 					str = str + '</li>';
 				}
-				$('.main-recomm-con').append(str);
+				$('.main-recomm-con-1').append(str);
 				//window.location.href="index.html";	
 			}else{
 				alert('登录失败');
@@ -111,6 +111,10 @@ function init_shopcar(){
 		dataType: "json",
 		success: function(data){
 			var str = '';
+			if('1000'==data.respCode){
+				alert('请重新登录!')
+				widow.location.href="login.html?callback="+base64encode(utf16to8(widow.location.href));
+			}
 			if('0000'==data.respCode){
 				console.log('data====='+data);
 				$('.shop-car-content').children('li').remove();
