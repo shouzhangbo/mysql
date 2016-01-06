@@ -27,9 +27,23 @@ public class BGUserCtrl {
 	private MgUserService mgUserService;
 	@Autowired
 	private RoleService roleService;
+	
 	@RequestMapping(value = "login", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
 	public BaseResponse login(UserForm userForm,HttpServletRequest request,HttpServletResponse response)
+	{
+		response.setHeader("Access-Control-Allow-Origin", "*" );
+		BaseResponse b = new BaseResponse();
+		List<MgUser> list = mgUserService.queryByUserName(userForm);
+		if(CommUtil.isEmpty(list)||list.size()<1){
+			return b;
+		}
+		b.setRespCode(GlobalConstant.successRespCode);
+		return b;
+	}
+	@RequestMapping(value = "query", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+	public BaseResponse query(UserForm userForm,HttpServletRequest request,HttpServletResponse response)
 	{
 		response.setHeader("Access-Control-Allow-Origin", "*" );
 		BaseResponse b = new BaseResponse();
