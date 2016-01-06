@@ -2,6 +2,10 @@
 var serUrl = "http://192.168.1.112:8080/mysql/";
 var categoryName = "",status=2,start='',end='',pageSize=5,currentPage=1,totalPage=0;
 $(function(){
+	if(!sessionStorage.username||sessionStorage.username==null||sessionStorage.username=='null')
+	{
+		window.location.href='index.html';
+	}
 	 initFa();
 	initLeft();
 	closeAlert();

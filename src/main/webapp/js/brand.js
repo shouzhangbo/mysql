@@ -1,6 +1,10 @@
 // JavaScript Document
 var serUrl = "http://192.168.1.112:8080/mysql/";
 $(function(){
+	if(!sessionStorage.username||sessionStorage.username==null||sessionStorage.username=='null')
+	{
+		window.location.href='index.html';
+	}
 	initLeft();
 	$('.left dl dd').hide();
 	$('.left dl').eq(0).children('dd').show();
