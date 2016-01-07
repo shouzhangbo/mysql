@@ -1,0 +1,194 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>功能管理</title>
+<link rel="stylesheet" type="text/css" MIME-type="text/css" href="../../css/public.css"/>
+<link rel="stylesheet" type="text/css" MIME-type="text/css" href="../../css/houtai.css"/>
+<script type="text/javascript" src="../../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../js/mg-user.js"></script>
+<script type="text/javascript" src="../../js/public.js"></script>
+</head>
+
+<body id="body">
+	<div class="head">
+		<div class="fl sys">XXXXXXXX管理系统</div>
+		<div class="fr user">
+			欢迎您，<span><a href="">shieryuedebojue</a></span>
+			<span><a href="">退出</a></span>
+		</div>
+	</div>
+	<div class="content">
+    	<!--左侧开始-->
+		<div class="left">
+			
+		</div>
+        <!--左侧结束-->
+		<div class="fr right">
+			<div class="right-head pt-10 pl-10">
+            	<h2 class="mb-10 right-h2">后台用户管理</h2>
+            </div>
+            <!--
+            <ul class="tab">
+            	<li class="active">一级管理</li>
+                <li>二级管理</li>
+                <li>三级管理</li>
+            </ul>
+            -->
+            <!---左右滑动-->
+            <!---搜索模块-->
+            <div class="search-content">
+            	<table class="table-1">
+                	<tbody>
+                    	<tr>
+                        	<td align="right">名称：</td>
+                            <td align="left"><input type="text" class="inp inp1 name" /></td>
+                            <td align="right">时间：</td>
+                            <td align="left"><input type="text" class="inp inp1 start" /></td>
+                            <td align="left"><input type="text" class="inp inp1 end" /></td>
+                        </tr>
+                        <tr>
+                        	<td align="right">状态：</td>
+                            <td align="left">
+                            	<select class="inp status">
+                            		<option value="2">全部</option>	
+                                    <option value="1">上线</option>
+                                    <option value="0">下线</option>
+                            	</select>
+                            </td>
+                            
+                            <td></td>
+                            <td></td>
+                        	<td align="right"></td>
+                            
+                            <td align="left"><input type="button" class="btn mr-10" id="search" value="搜索" />
+                            <input type="button" class="btn" value="导出" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!---数据展示-->
+            <div class="data-content">
+            	<a href="javascript:;" class="add-new btn btn-a mt-10 ml-10 mb-10 fl">新增</a>
+                <a href="javascript:;" class="all-dele btn btn-a mt-10 ml-10 mb-10 fl">全部删除</a>
+            	<table class="table-2 data-tab">
+                	<thead>
+                    	<tr>
+                        	<td><input type="checkbox" class="all-select" /><span class="">全选</span></td>
+                            <td>ID</td><td>名称</td><td>url</td><td>index</td><td>ico</td><td>状态</td><td>时间</td><td>操作</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!-- -->
+                    	<tr>
+                        	<td><input type="checkbox" /><td>1</td><td>后台用户管理</td><td>mg-user.html</td><td>1</td>
+                            <td><img src="../../images/youxi-02.png" /></td><td>上线</td><td>2015-01-11 10:00:11</td>
+                            <td><a href="javascript:;" class="check">查看</a>|<a href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
+                        </tr>
+                       <tr>
+                        	<td><input type="checkbox" /><td>1</td><td>产品管理</td><td>product.html</td><td>2</td>
+                            <td><img src="../../images/youxi-02.png" /></td><td>上线</td><td>2015-01-11 10:00:11</td>
+                            <td><a href="javascript:;" class="check">查看</a>|<a href="javascript:;" class="update">修改</a>|<a href="javascript:;" class="delete">删除</a></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <!----分页--->
+            <!--
+            <div class="page-content-left fl mt-10 ml-10">
+            	<span>总订单数: 4 条</span><span>总订单金额:684.00元</span>
+            </div>
+            --->
+            <div class="page-content-right fr mt-10 mr-10">
+            	<span class="fl mt-5">当前：</span><span class="fl mt-5">2</span><span class="fl mt-5">，总计</span> <span class="fl mt-5">26</span>
+                <span class="fl page-f page-f-1">首页</span>
+                <span class="fl page-f page-f-3">上一页</span>
+                <!--
+                <ul class="page-data fl ml-10">
+                    <li class="ok">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li class="omit">....</li>
+                    <li>11</li>
+                    <li>12</li>
+                    <li>13</li>
+                </ul>
+                -->
+                <span class="fl page-f page-f-2">尾页</span>
+                <span class="fl page-f page-f-4">下一页</span>
+            </div>
+		</div>
+	</div>
+	<div class="bottom mg-at">
+		
+	</div>
+    <!--弹出框1-->
+    <div class="alertbox alertbox-1">
+    	<div class="alertbox-head">
+        	<span class="fl">提示语</span>
+            <span class="fr alertbox-close">x</span>
+        </div>
+        <div class="alertbox-content">
+        	你确定要删除xxx？
+        </div>
+       	<div class="alertbox-btn-content">
+            <input type="button" class="btn btn-ok" value="确定" />
+            <input type="button" class="btn btn-cancl" value="取消" />
+        </div>
+    </div>
+    <!--弹出框1 结束-->
+    <!--弹出框2 -->
+    <div class="alertbox alertbox-2">
+    	<div class="alertbox-head">
+        	<span class="fl">添加商品种类</span>
+            <span class="fr alertbox-close">x</span>
+        </div>
+        <div class="alertbox-content">
+        	<table class="table-3">
+            	<tbody>
+                	<tr>
+                    	<td align="right">用户名：</td>
+                        <td align="left"><input type="text" class="inp file-1"  /></td>
+                    </tr>
+                    <tr>
+                    	<td align="right">密码：</td>
+                        <td align="left"><input type="text" class="inp file-2"  /></td>
+                    </tr>
+                    <tr>
+                    	<td align="right">状态：</td>
+                        <td align="left">
+                        	<select class="inp alert-inp file-3">
+                            	<option value="1">上线</option>
+                                <option value="0">下线</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right">所属角色：</td>
+                        <td align="left">
+                        	<select class="inp alert-inp file-4 up-option">
+                            	<option value="1">手机</option>
+                                <option value="0">电脑</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+       	<div class="alertbox-btn-content">
+            <input type="button" class="btn btn-ok" value="确定" />
+            <input type="button" class="btn btn-cancl" value="取消" />
+        </div>
+    </div>
+    <!--弹出框2 结束-->
+    <script>
+    	/*$(function(){
+			var ss = $('<tr><td align="right">上传图片：</td><td align="left"><div class="img-content"></div></td></tr><tr><td align="right"><input type="file" class="upImg upImg-1" /></td></tr>');
+			$('.upImg-1').live('change',function(){
+				ss.insertAfter($(this).parent().parent());
+			});
+		});*/
+    </script>
+</body>
+</html>
