@@ -82,10 +82,22 @@ $('.get-all').live('click',function(){
 //加入到左边
 $('.moveBtn').live('click',function(){
 	//如果全选
+	var str = {};
+	var arr = [];
 	if($('.get-all').is(':checked')){
-			
+		
 	}else{
-			
+		$("input[type='checkbox']").each(function(){ 
+			if($(this).attr("checked")){
+				if($(this).attr('name')!='ch_level_1'){
+					$(this).parent().parent().parent().siblings('span').html()
+					arr.push($(this).siblings('span').html());
+					console.log();
+				}else{
+					
+				}
+			}
+		})
 	}
 	$('.levelServer') 
 });
