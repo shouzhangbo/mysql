@@ -23,7 +23,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "role_id",length=11)
 	private Integer roleId;
-	 @Column(name = "role_name",length=12)
+	@Column(name = "role_name",length=12)
 	private String roleName;
 	@Column(name = "status",length=2)
 	private Integer status;

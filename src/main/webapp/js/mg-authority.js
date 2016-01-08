@@ -84,20 +84,37 @@ $('.moveBtn').live('click',function(){
 	//如果全选
 	var str = {};
 	var arr = [];
+	var nameArr=[];
 	if($('.get-all').is(':checked')){
 		
 	}else{
+		/*for(var i=0;i<$("input:checkbox[name='ch_level_1']").length;i++){
+			console.log($("input:checkbox[name='ch_level_1']")[i])
+			console.log($(this));
+			var oInp = $("input:checkbox[name='ch_level_1']")[i];
+			if(oInp.is(":checked")){
+				//下面的内容也选择了
+				
+			}else{
+				$("input:checkbox[name='ch_level_1']")[i].siblings('dl').find("input[type='checkbox']").each(function(){ 
+					if($(this).attr("checked")){
+						arr.push($(this).siblings('span').html());
+					}
+				});
+			}
+		}*/
 		$("input[type='checkbox']").each(function(){ 
 			if($(this).attr("checked")){
 				if($(this).attr('name')!='ch_level_1'){
-					$(this).parent().parent().parent().siblings('span').html()
+					nameArr.push($(this).parent().parent().parent().siblings('span').html());
 					arr.push($(this).siblings('span').html());
-					console.log();
 				}else{
 					
 				}
 			}
 		})
+		console.log(nameArr);
+		console.log(arr);
 	}
 	$('.levelServer') 
 });
