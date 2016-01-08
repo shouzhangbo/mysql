@@ -1,42 +1,18 @@
-package com.my.mysql.model;
+package com.my.mysql.response.bean;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-@Entity   
-@Table(name="mg_user")
-public class MgUser {
-
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "mg_user_id",length=11)
+public class MgUserBeans {
 	private Integer mgUserId;
-	@Column(name = "mg_user_name",length=32)
 	private String mgUserName;
-	@Column(name = "mg_psd",length=64)
 	private String mgPsd;
-	@Column(name = "status",length=2)
 	private Integer status;
-	@Column(name = "status_name",length=32)
 	private String statusName;
-	@Column(name = "create_at", nullable = false)
 	private Date createAt;
-	@Column(name = "update_at", nullable = false)
 	private Date updateAt;
-	
-	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE }, optional = true)
-	@JoinColumn(name = "role_id")
-	private Role role;
-	
+	private String RoleName;
 	public Integer getMgUserId() {
 		return mgUserId;
 	}
@@ -79,10 +55,10 @@ public class MgUser {
 	public void setUpdateAt(Date updateAt) {
 		this.updateAt = updateAt;
 	}
-	public Role getRole() {
-		return role;
+	public String getRoleName() {
+		return RoleName;
 	}
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoleName(String roleName) {
+		RoleName = roleName;
 	}
 }

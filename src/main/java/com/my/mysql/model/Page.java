@@ -10,21 +10,29 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 
 @Entity   
-@Table(name="role")
-public class Role {
+@Table(name="page")
+public class Page {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "role_id",length=11)
-	private Integer roleId;
-	@Column(name = "role_name",length=12)
-	private String roleName;
+    @Column(name = "page_id",length=11)
+	private Integer pageId;
+	@Column(name = "page_name",length=12)
+	private String pageName;
+	@Column(name = "page_ico",length=100)
+	private String pageIco;
+	@Column(name = "page_url",length=100)
+	private String pageUrl;
+	@Column(name = "indexs",length=4)
+	private Integer indexs;
 	@Column(name = "status",length=2)
 	private Integer status;
 	@Column(name = "status_name",length=32)
@@ -34,25 +42,37 @@ public class Role {
 	@Column(name = "update_at", nullable = false)
 	private Date updateAt;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "role")
-	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
-	private Set<MgUser> mgUser;
+	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE }, optional = true)
+	@JoinColumn(name = "menu_id")
+	private Menu menu;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "auRole")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "auPage")
 	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
 	private Set<Authority> authority;
 	
-	public Integer getRoleId() {
-		return roleId;
+	public Integer getPageId() {
+		return pageId;
 	}
-	public void setRoleId(Integer roleId) {
-		this.roleId = roleId;
+	public void setPageId(Integer pageId) {
+		this.pageId = pageId;
 	}
-	public String getRoleName() {
-		return roleName;
+	public String getPageName() {
+		return pageName;
 	}
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
+	public void setPageName(String pageName) {
+		this.pageName = pageName;
+	}
+	public String getPageIco() {
+		return pageIco;
+	}
+	public void setPageIco(String pageIco) {
+		this.pageIco = pageIco;
+	}
+	public Integer getIndexs() {
+		return indexs;
+	}
+	public void setIndexs(Integer indexs) {
+		this.indexs = indexs;
 	}
 	public Integer getStatus() {
 		return status;
@@ -78,11 +98,17 @@ public class Role {
 	public void setUpdateAt(Date updateAt) {
 		this.updateAt = updateAt;
 	}
-	public Set<MgUser> getMgUser() {
-		return mgUser;
+	public String getPageUrl() {
+		return pageUrl;
 	}
-	public void setMgUser(Set<MgUser> mgUser) {
-		this.mgUser = mgUser;
+	public void setPageUrl(String pageUrl) {
+		this.pageUrl = pageUrl;
+	}
+	public Menu getMenu() {
+		return menu;
+	}
+	public void setMenu(Menu menu) {
+		this.menu = menu;
 	}
 	public Set<Authority> getAuthority() {
 		return authority;

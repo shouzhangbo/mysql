@@ -16,15 +16,19 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 
 @Entity   
-@Table(name="role")
-public class Role {
+@Table(name="menu")
+public class Menu {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "role_id",length=11)
-	private Integer roleId;
-	@Column(name = "role_name",length=12)
-	private String roleName;
+    @Column(name = "menu_id",length=11)
+	private Integer menuId;
+	@Column(name = "menu_name",length=12)
+	private String menuName;
+	@Column(name = "menu_ico",length=100)
+	private String menuIco;
+	@Column(name = "indexs",length=4)
+	private Integer indexs;
 	@Column(name = "status",length=2)
 	private Integer status;
 	@Column(name = "status_name",length=32)
@@ -34,25 +38,33 @@ public class Role {
 	@Column(name = "update_at", nullable = false)
 	private Date updateAt;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "role")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "menu")
 	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
-	private Set<MgUser> mgUser;
+	private Set<Page> page;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "auRole")
-	@Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
-	private Set<Authority> authority;
-	
-	public Integer getRoleId() {
-		return roleId;
+	public Integer getMenuId() {
+		return menuId;
 	}
-	public void setRoleId(Integer roleId) {
-		this.roleId = roleId;
+	public void setMenuId(Integer menuId) {
+		this.menuId = menuId;
 	}
-	public String getRoleName() {
-		return roleName;
+	public String getMenuName() {
+		return menuName;
 	}
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
+	public void setMenuName(String menuName) {
+		this.menuName = menuName;
+	}
+	public String getMenuIco() {
+		return menuIco;
+	}
+	public void setMenuIco(String menuIco) {
+		this.menuIco = menuIco;
+	}
+	public Integer getIndexs() {
+		return indexs;
+	}
+	public void setIndexs(Integer indexs) {
+		this.indexs = indexs;
 	}
 	public Integer getStatus() {
 		return status;
@@ -78,16 +90,10 @@ public class Role {
 	public void setUpdateAt(Date updateAt) {
 		this.updateAt = updateAt;
 	}
-	public Set<MgUser> getMgUser() {
-		return mgUser;
+	public Set<Page> getPage() {
+		return page;
 	}
-	public void setMgUser(Set<MgUser> mgUser) {
-		this.mgUser = mgUser;
-	}
-	public Set<Authority> getAuthority() {
-		return authority;
-	}
-	public void setAuthority(Set<Authority> authority) {
-		this.authority = authority;
+	public void setPage(Set<Page> page) {
+		this.page = page;
 	}
 }

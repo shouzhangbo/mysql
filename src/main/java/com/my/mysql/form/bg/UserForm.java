@@ -4,6 +4,7 @@ import com.my.mysql.form.BaseForm;
 
 public class UserForm extends BaseForm{
 
+	private Integer roleId;
 	private String userName;
 	private String userPsd;
 	private String startTime;
@@ -31,6 +32,12 @@ public class UserForm extends BaseForm{
 	}
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
+	}
+	public Integer getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
 	
 }
