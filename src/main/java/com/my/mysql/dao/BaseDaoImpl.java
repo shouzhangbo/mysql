@@ -615,4 +615,38 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 //		return list;
         
     }
+    
+    /**
+     * 通过hql语句查找实体，且指定分页 <br/>
+     *
+     * @param hqlStr
+     * @param params
+     * @param pageInfo
+     * @return
+     */
+    public List findModelView(String hqlStr) {
+        
+        Session session = getSession();
+        String totalCont;
+        if (hqlStr.indexOf("order by") != -1) {
+            totalCont = "select count(*) "
+                    + hqlStr.substring(hqlStr.indexOf("from"), hqlStr.indexOf("order by"));
+        } else {
+            totalCont = "select count(*) "
+                    + hqlStr.substring(hqlStr.indexOf("from"));
+        }
+        Query query = session.createQuery(totalCont);
+//        List resTotal = query.list();
+//        if (resTotal.size() > 0) {
+//            pageInfo.setTotalReco(((Long) resTotal.get(0)).intValue());
+//        }
+        query = session.createQuery(hqlStr);
+//        if (pageInfo.getCurrentPage() != 0) {
+//            pageInfo.setStRec((pageInfo.getCurrentPage() - 1)
+//                    * pageInfo.getPageSize());
+//        }
+//        query.setFirstResult(pageInfo.getStRec());
+//        query.setMaxResults(pageInfo.getPageSize());
+        return query.list();
+    }
 }

@@ -27,14 +27,13 @@ public class MgUserServiceImpl extends BaseServiceImpl<MgUser> implements MgUser
 	@Override
 	public List<MgUser> queryByCond(UserForm userForm) {
 		List<MgUser> list = new ArrayList<MgUser>();
-		String hql = "from MgUser where 1=1mgUserName like :mgUserName ";
+		String hql = "from MgUser where 1=1";
 		Map<String,Object> map = new HashMap<String,Object>();
 		try{
 			if(!CommUtil.isEmpty(userForm.getUserName())){
-				
+				hql = hql + " and mgUserName like :mgUserName ";
+				map.put("mgUserName", userForm.getUserName());
 			}
-			map.put("mgUserName", userForm.getUserName());
-			map.put("mgPsd", userForm.getUserPsd());
 			if(!CommUtil.isEmpty(userForm.getStartTime())){
 				hql = hql + " and createAt >=:createAt";
 				map.put("createAt", sdf.parse(userForm.getStartTime()));

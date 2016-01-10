@@ -109,7 +109,7 @@ public class UserCtrl {
 		return baseRes;
 	}
 	/**
-	 * 注册
+	 * 登录
 	 * @param userForm
 	 * @param result
 	 * @param request

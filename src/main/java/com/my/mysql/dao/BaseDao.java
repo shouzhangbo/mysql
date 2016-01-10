@@ -295,4 +295,6 @@ public interface BaseDao<T> {
     Long findCounts(final String hql, final Map<String, Object> params);
     
     List findModelViewByPage(String hqlStr, PageInfo pageInfo);
+    
+    List findModelView(String hqlStr);
 }
